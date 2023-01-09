@@ -1,6 +1,6 @@
 package ex02_loop;
 
-public class Ex01_for_java {
+public class Ex01_for {
 	
 	/*
 	 	for문
@@ -22,7 +22,7 @@ public class Ex01_for_java {
 		}
 		
 	}
-	
+
 	public static void ex02() {
 		
 		// 횟수(5번)
@@ -66,4 +66,3 @@ public class Ex01_for_java {
 	}
 
 }
-

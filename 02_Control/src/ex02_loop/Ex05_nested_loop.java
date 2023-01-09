@@ -65,6 +65,9 @@ public class Ex05_nested_loop {
 				
 		}
 		
+	public static void ex05() { // 구구단 연습
+		
+	}
 	public static void main(String[] args) {
 		ex04();
 		
