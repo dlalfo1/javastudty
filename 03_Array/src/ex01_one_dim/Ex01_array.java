@@ -24,13 +24,13 @@ public class Ex01_array {
 	
 	
 	/*
-	 	    배열요소
-	 		1. 배열의 각 변수를 의미 
-	 		2. 배열명[인덱스] 
-	 		3. 배열이 생성되면 자동으로 초기화 된다.
-	 			0(int), 0.0(double), false(boolean), null(참조타입) 값으로 초기화 된다.(값이 없음을 의미)
-	 			숫자 0이랑 false는 본질적으로 같은 값이다. true는 1과 같다.
-	 			< - > int = a; a는 값을 가지지만 무슨 값인지는 모름. 쓰레기값이 들어가 있음.
+		배열요소
+		1. 배열의 각 변수를 의미 
+		2. 배열명[인덱스] 
+		3. 배열이 생성되면 자동으로 초기화 된다.
+		0(int), 0.0(double), false(boolean), null(참조타입) 값으로 초기화 된다.(값이 없음을 의미)
+		숫자 0이랑 false는 본질적으로 같은 값이다. true는 1과 같다.
+		< - > int = a; a는 값을 가지지만 무슨 값인지는 모름. 쓰레기값이 들어가 있음.
 	 		
     */
 	
@@ -53,7 +53,9 @@ public class Ex01_array {
 		int[] arr = new int[5];
 		
 		// 배열 요소 순회(하나씩 접근하기), 대부분의 배열은 순회를 쓴다.
-		for(int i = 0; i < 5; i++) { // i <= 4 라고 안 씀!
+		for(int i = 0; i < 5; i++) { // i <= 4 라고 안 씀! 무조건 i = 0; 으로 0부터 시작하고 
+									 // 조건문의 값은 배열수랑 동일하게 하기. 그래야 알아보기 쉬움
+									 // 5개의 배열 요소를 만드는구나~ 알 수 있다.
 			System.out.println(arr[i]);
 		}
 		
@@ -146,14 +148,16 @@ public class Ex01_array {
 		
 	
 		for(int i = 1; i < scores.length; i++) {
-			total += scores[i];
-			if(max < scores[i]) {
-				max = scores[i];
+			total += scores[i]; // i가 1부터 시작하는 이유는 합계 구할 때 0번째 배열값을 두번더 하지 않기 위해.
+			
+			if(max < scores[i]) { // max보다 큰 값일 경우
+				max = scores[i]; // max를 그 값으로 변경한다.
 			}
 			if(min > scores[i]) {
 				min = scores[i];
 			}
-					
+				
+			
 		}
 
 		System.out.println("합계 : " + total + "점");
@@ -196,11 +200,59 @@ public class Ex01_array {
 		int month = 2;
 		
 		System.out.println(month + "월은 " + season[month % 12 / 3] + "이다");
-		
+		System.out.println(month % 12 / 3);
 	}
 	
+	public static void ex10() {
+		
+		// 점수를 배열로 관리하기
+		int[] scores = new int[5];
+					
+	// 각 점수를 배열에 저장하기
+	// scores[0] = 100;
+	// scores[1] = 70;
+	// scores[2] = 95;
+	// scores[3] = 83;
+	// scores[4] = 76;
+	
+	// 합계(평균), 최대/최소
+	// int total = 0; // Zero
+	// int max = 0; // 배열 중 가장 작은 값
+	// int min = 100; // 배열 중 가장 큰 값
+		
+		scores[0] = 100;
+		scores[1] = 70;
+		scores[2] = 95;
+		scores[3] = 83;
+		scores[4] = 76;
+		
+		int total = 0;
+		int max  = 0;
+		int min = 100;
+		
+		//최대
+		
+		for(int i = 0; i < scores.length; i++) {
+			total += scores[i];
+			
+			if(max < scores[i]) { // max를 위에서 0으로 초기화 해줬으므로
+								  // 0보다 큰 scores[i]의 값들이 계속 max에 저장됨.
+				max = scores[i];
+			}
+			
+			if(min > scores[i]) { // min을 위에서 100값 (배열 중 최대값) 으로 초기화 해줬으므로
+				min = scores[i];  // 100보다 작은 scores[i]의 값들이 계속 min에 저장됨.
+			}
+		}
+		System.out.println(max);
+		System.out.println(total);
+		System.out.println(min);
+		System.out.println((double)total / scores.length);
+	}
+	
+		
 	public static void main(String[] args) {
-		ex09();
+		ex10();
 	}
 		
 }
