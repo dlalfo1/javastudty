@@ -248,6 +248,12 @@ public class Ex01_array {
 		System.out.println(total);
 		System.out.println(min);
 		System.out.println((double)total / scores.length);
+		
+		int[] arr = new int[5];
+		
+		for(int i = 0; i < arr.length; i++) {
+			System.out.println(arr[i]);
+		}
 	}
 	
 		

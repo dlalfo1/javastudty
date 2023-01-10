@@ -13,7 +13,7 @@ public class Ex03_advanced_for {
 		// 향상된 for문 (일반 for문도 꼭 공부해야함)
 		
 		
-		for(int n : scores) {
+		for(int n : scores) { // 외우기
 			total += n; // 배열 인덱스를 지정하지않고 아무데서나 꺼내온다는 뜻으로 n 선언.
 			if(max < n) {
 				max = n;

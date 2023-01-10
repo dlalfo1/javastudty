@@ -3,7 +3,7 @@ package ex01_one_dim;
 public class Ex02_reference {
 	
 	
-	/* int[] arr;
+	/* int[] arr; referencd(참조값) = address(주소값)
 	
 		arr = new int[5];
 	
@@ -48,7 +48,9 @@ public class Ex02_reference {
 			System.out.println(b[i]);
 		}
 		
+		b[0] = 100; // 배열 a의 번지수와 배열 b의 번지수가 같아졌으므로 배열 b의 0번 인덱스값에 100을 저장하면 배열 a의 0번 인덱스값도 100으로 바뀐다
 		
+		System.out.println(a[0]); 
 		/*
             |-------|
           a | 0x123 |─────┐
@@ -110,7 +112,7 @@ public class Ex02_reference {
 		
 	}
 	public static void main(String[] args) {
-		ex03();
+		ex02();
 
 	}
 
