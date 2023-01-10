@@ -16,6 +16,7 @@ public class MainClass {
 		for(int i = 0; i < school.students.length; i++) {
 			
 			// Student 객체 생성
+			
 			school.students[i] = new Student();
 			
 			school.students[i].name = "정숙";

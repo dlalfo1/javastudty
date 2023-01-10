@@ -73,6 +73,8 @@ public class Test {
 	
 		System.out.println("짝수 합은 " + a + "입니다");
 		System.out.println("홀수 합은 " + b + "입니다");
+		
+		// 이건
 	}
 			
 	
