@@ -91,6 +91,31 @@ public class Ex01_array {
 				
 	}
 	
+	public static void ex05() { // 걍 내가 해본거..
+		int[][] arr;
+		
+		// 2차원 배열 생성(행만 생성하기)
+		arr = new int[10][]; // 1차원 배열이 3개다! 행은 비워준다.
+		
+		// 각 행이 가질 열을 생성하기(각 1차원 배열의 생성)
+		arr[0] = new int[10]; 
+		arr[1] = new int[10]; 
+		arr[2] = new int[10];	
+		arr[3] = new int[10];	
+		arr[4] = new int[10];	
+		arr[5] = new int[10];	
+		arr[6] = new int[10];	
+		arr[7] = new int[10];	
+		arr[8] = new int[10];	
+		arr[9] = new int[10];	
+		
+		for(int i = 0; i < arr.length; i++) { // 배열의 길이는 3행이므로 변수 i에 저장해줌.
+			for(int j = 0; j < arr[i].length; j++) { // 열의 길이도 변수 arr[i]에 저장해줌.
+				System.out.print(arr[i][j] + "\t");
+			}
+				System.out.println();
+		}
+	}
 	public static void main(String[] args) {
 		ex04();
 		
