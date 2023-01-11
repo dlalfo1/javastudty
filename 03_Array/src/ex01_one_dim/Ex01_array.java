@@ -1,4 +1,4 @@
-package ex01_one_dim;
+ package ex01_one_dim;
 
 public class Ex01_array {
 
