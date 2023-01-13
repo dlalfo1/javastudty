@@ -7,16 +7,56 @@ public class MainClass {
 	// 예시
 	// 남자입니다.
 	public static void q1() {
-		int number = 1234567;
+		
+	/* 첫번째 방법  
+	 * 
+		int number = 1234567; (길이가 정해져 있을 때)
 		String result;
-		if(number / 1000000 % 2 == 0) {
+		if(number / 1000000 % 2 == 0) { 
+		// 글자 수 그대로 0을 넣어서 나눠주면 몫이 1이 나옴, 즉 첫번째 글자만 뽑을 수 있음.
 			result = "여자";
 		} else {
 			result = "남자";
 		}
 		System.out.println(result + "입니다.");
 	}
-	
+
+	*/
+		
+	/* 두번째 방법 (길이가 변할 때)
+	  
+	 int number = 1234567;
+	 
+	 while(number >= 10) {
+		 number /= 10; 
+		 // number가 첫번째 글자로 바뀜
+	 }
+	 
+	 String result;
+	 if(number % 2 == 0) {
+		 result = "여자";
+		} else {
+			result = "남자";
+		}
+		System.out.println(result + "입니다.");
+	*/
+	 
+		int number = 1654654;
+		
+		String strNumber = number + "";
+		// nubmer가 문자열로 변함 {'1','2','3','4','5','6','7'} 진짜 배열은 아니지만 배열 형식으로 바뀜.
+		strNumber.charAt(0); // 배열의 인덱스값 0번(첫번째값)을 구한다.
+		
+		String result;
+		 if(strNumber.charAt(0) % 2 == 0) { // 문자 '1'은 아스키코드에서 숫자 49로 나뉜다. 49 / 2로 바뀐다.
+			 								// 아스키코드의 홀수문자도 숫자 홀수기 때문에 이 식이 성립한다.
+			System.out.println("여자입니다");
+			} else {
+			System.out.println("남자입니다");
+			}
+		
+}
+
 	// 문제2. int a와 int b에 저장된 결과를 이용해서 사칙연산 결과를 출력하시오.
 	// 예시
 	// 7 + 2 = 9
@@ -39,14 +79,29 @@ public class MainClass {
 	// ...
 	// 5 x 5 = 25
 	public static void q3() {
+		
+	/* 첫번째 방법
+	 * 
 		for(int dan = 2; dan <= 5; dan++) {
 			for(int n = 1; n <= 9; n++) {
 				System.out.println(dan + " x " + n + " = " + (dan * n));
 				if(dan == 5 && n == 5) {
 					break;
 				}
-			}
 		}
+	*/
+	/* 두번째 방법(라벨을 사용해서 곧바로 라벨로 이동하기 때문에 좋진 않다.)
+	 
+	 	outer: // 바깥 for문 laber 
+		for(int dan = 2; dan <= 9; dan++) { // 일단 구구단 전체 실행하기
+			inner: // 안쪽 ofr문 laber
+			for(int n = 1; n <= 9; n++) {
+				System.out.println(dan + " x " + n + " = " + (dan * n));
+				if(dan == 5 && n == 5) {
+					break outer; // 바깥 for문 끝내기
+					 		     // 5 x 5에서 바깥 for문이 끝나므로 더 안 돌아간다. 	
+	 */
+		
 	}
 	
 	// 문제4. begin부터 end 사이의 모든 정수들의 평균을 출력하시오.
@@ -54,6 +109,8 @@ public class MainClass {
 	// 예시
 	// 1부터 6사이 모든 정수의 평균은 3.5입니다.
 	public static void q4() {
+	
+	
 		int begin = 1;
 		int end = 6;
 		int total = 0;
@@ -61,6 +118,8 @@ public class MainClass {
 			total += n;
 		}
 		System.out.println(begin + "부터 " + end + "사이 모든 정수의 평균은 " + (total / (end - begin + 1.0)) + "입니다.");
+									// 숫자 사이의 길이 구하는 공식 end - begin +1 이건데 소숫점까지 반영해줘 야하니까 1.0. 강제캐스팅 가능함 (double) 붙여주기
+									 
 	}
 	
 	// 문제5. 1부터 100 사이의 모든 짝수와 홀수를 각각 더한 결과를 모두 출력하시오.
@@ -94,15 +153,28 @@ public class MainClass {
 			}
 		}
 		System.out.println("합계는 " + total + "입니다.");
+		
+	/*
+		int total = 0;
+		int[] arr = {1, -1, -2, 2, 3, -3};
+		for(int i = 0; i < arr.length; i++) {
+			if(arr[i] < 0) {
+				continue; // 만약 arr배열의 인덱스 값이 0보다 작으면 밑으로 내려가지말고 다시 for문으로 돌아가라
+						  // 즉 int total = 0; 이 조건문이 실행되지 않는다.	
+			}
+			total += arr[i];
+			
+	*/		
 	}
 	
 	// 문제7. 제시된 배열에 변수 ch에 저장된 문자가 몇 개 포함되어 있는지 갯수를 구해서 출력하시오.
 	// 예시
 	// 배열에 포함된 h는 2개입니다.
 	public static void q7() {
-		char ch = 'h';
+		
+		char ch = 'h'; // 2개라는 걸 구해야하니까 개수를 저장할 수 있는 변수 먼저 선언해준다. 이 생각 먼저 해야함.
 		char[] characters = {'a', 'h', 'e', 'h', 'p'};
-		int count = 0;
+		int count = 0; // 개수를 구하는 변수 선언. 0부터 카운팅하라는 뜻.
 		for(int i = 0; i < characters.length; i++) {
 			if(characters[i] == ch) {
 				count++;
@@ -120,10 +192,10 @@ public class MainClass {
 	// 행주도마
 	public static void q8() {
 		String strScore = "75";
-		int score = Integer.parseInt(strScore);
-		String result = "";
+		int score = Integer.parseInt(strScore); // 먼저 String타입의 "75" int값 75로 바꿔준다.
+		String result = ""; //변수 result를 빈 문자열로 초기화 해줘야 한다. 초기화 안 하고 String result; 이렇게만 하면
 		if(score >= 60) {
-			result += "행주";
+			result += "행주"; // 여기서 오류가 뜬다. 왜냐? 초기화를 안 했으면 쓰레기 값만 들어있기 때문이다.
 		}
 		if(score >= 70) {
 			result += "도마";
@@ -135,6 +207,8 @@ public class MainClass {
 			result += "냄비";
 		}
 		System.out.println(result);
+		
+		
 	}
 	
 	// 문제9. 1 ~ 100 사이의 정수를 대상으로 369 게임 결과를 아래와 같이 출력하시오.
@@ -149,6 +223,7 @@ public class MainClass {
 	public static void q9() {
 		boolean condition1 = false;  // 일의 자리가 3의 배수인가?
 		boolean condition2 = false;  // 십의 자리가 3의 배수인가?
+		
 		for (int n = 1; n <= 100; n++) {
 			condition1 = (n % 10) % 3 == 0 && (n % 10) != 0;
 			condition2 = (n / 10) % 3 == 0 && (n / 10) != 0;

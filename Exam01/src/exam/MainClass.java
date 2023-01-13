@@ -117,6 +117,8 @@ public class MainClass {
 			}
 	}
 		System.out.println("합계는 " + total + "입니다");
+		
+		
 	}
 	
 	// 문제7. 제시된 배열에 변수 ch에 저장된 문자가 몇 개 포함되어 있는지 갯수를 구해서 출력하시오.
@@ -134,9 +136,8 @@ public class MainClass {
 			}
 			System.out.println(ch);
 		}
+	
 		
-	
-	
 	// 문제8. 점수에 따라 가져갈 수 있는 모든 사은품을 출력하시오.
 	// 점수가 60점 이상인 경우 : "행주"
 	// 점수가 70점 이상인 경우 : "행주", "도마"
@@ -148,6 +149,9 @@ public class MainClass {
 		
 		String strScore = "75";
 		
+	/* 내가 푼거	
+	  
+	 
 		int score = Integer.parseInt(strScore);
 		switch( score / 10 ) {
 		case 10: 
@@ -156,8 +160,33 @@ public class MainClass {
 		case 7: System.out.println("행주도마"); break;
 		default: System.out.println("행주");
 		
+	*/	
+		
+	    String result = "";
+	    
+	    for(int i = 1; i <= 10; i++) {
+	    	System.out.print(i + " "); // 이걸 문자열로 변환하는 방법 생각해보기
+	    
 		}
+	    	System.out.println();
 			}
+	
+	/* switch문으로 만들어보기
+	 
+	    String strScore = "75";
+	  	String result = "";
+	  	int score = Integer.parseInt(strScore);
+	  	
+	  	switch( score / 10 ) {
+		case 10: 
+		case 9: result +=  "냄비"
+	  	case 6: result += "식칼"
+		case 7: result += "도마"
+		case 8: result += "행주"
+	  	
+	  	// 이렇게 코드를 짜면 case문마다 문자열을 반복해서 적을 필요가 없다.
+	 
+	 */
 	
 	// 문제9. 1 ~ 100 사이의 정수를 대상으로 369 게임 결과를 아래와 같이 출력하시오.
 	// 예시
@@ -168,20 +197,35 @@ public class MainClass {
 	// ...
 	// 81  82  짝   84  85  짝   87  88  짝   짝
 	// 짝  짝  짝짝 짝  짝  짝짝 짝  짝  짝짝 100
+	
+	
 	public static void q9() {
 		boolean condition1 = false;  // 일의 자리가 3의 배수인가?
 		boolean condition2 = false;  // 십의 자리가 3의 배수인가?
 		
-		
+		// 왜 이러는지..? 오류 보기
 				
-		for(int a = 1; a <= 100; a++) {
-			System.out.print(a + "  ");
-			if(a % 10 == 0) {
+		for(int n = 1; n <= 100; n++) {
+			int one = n % 10;  // n을 10으로 나눈 나머지, 즉 일의 자리
+			condition1 = one % 3 == 0 && one != 0; // 1의 자리를 3으로 나눈게 0이고 그 값은
+			int ten = n / 10; // n을 10으로 나눈 몫
+			condition2 = ten % 3 == 0 && ten != 0;
+			if(condition1 && condition2) {
+				System.out.println("짝짝" + "\t");
+			}
+				else if(condition1 || condition2) {
+				System.out.print("짝" + "\t");
+			}
+				else {
+					System.out.print(n + "\t");
+			}
+			if(n % 10 == 0 ) {
 				System.out.println();
 			}
-		}
+		
 	}
 	
+}
 	// 문제10. 5명의 이름과 점수를 각각의 배열에 저장하였다.
 	// 가장 높은 점수를 받은 사람의 이름을 출력하시오.
 	// 예시
@@ -190,21 +234,18 @@ public class MainClass {
 		String[] names = {"철수", "영희", "정숙", "상철", "미희"};
 		int[] scores = {50, 60, 90, 80, 70};
 		
-		String result[][] = {
-				{"철수", "영희", "정숙", "상철", "미희"},
-				{"50", "60", "90", "80", "70"},
-		};
-	
-		System.out.println(result);
-		int max = 0;
-	
-		for(int i = 0; i < scores.length; i++) {
-			if(max < scores[i]) {
-				max = scores[i];
-			}
-		}
+		int max = scores[0]; // 50
+		int maxNo = 0; // 0
 		
-		System.out.println(max);
+		for(int i = 1; i < scores.length; i++) { // 1부터 시작하는 이유는 이미 50점으로 초기화 해줬기 때문에 비교할 필요가 없다.
+			if(scores[0] > max) {
+				max += scores[0]; // 90 점수는 그냥 인덱스 번호 구하려고 구한거임.
+				maxNo = i; // 2 인덱스 2의 요소인 90 이 최대점수기 때문에
+								
+			}				
+		}
+		System.out.println("가장 높은 점수를 받은 사람은" + names[maxNo] + "입니다");
+		
 	}
 	// main 메소드는 그대로 사용합니다.
 	public static void main(String[] args) {
