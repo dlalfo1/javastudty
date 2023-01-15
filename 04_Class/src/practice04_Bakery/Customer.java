@@ -18,6 +18,16 @@ public class Customer {
 	// 특정 빵집에 얼마의 돈을 지불한다.
 	public void buy(Bakery bakery, int money) {
 		
+		// bakery에 money를 전달하고, 빵과 잔돈을 받는다
+		BreadAndChange bnc = bakery.sell(money);
+		
+		// 받은 빵과 잔돈 처리
+		this.breadCount += bnc.getBreadCount();
+		this.money += bnc.getChange();
+		
+		// 고객의 돈은 줄었다.
+		this.money -= money;
+		
 	}
 	
 	// 구매자 현황 메소드

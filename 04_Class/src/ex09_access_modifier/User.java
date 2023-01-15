@@ -41,10 +41,10 @@ public class User {
 	
 	
 	public String getId() {
-		return id;
+		return id; // 메소드 호출 시 삽인된 데이터 값을 반화해주는 역할을 담당한다.
 	}
 	public void setId(String id) {
-		this.id = id;
+		this.id = id; // 사용자가 메소드를 호출 시 데이터를 삽입해주는 역할을 담당한다.
 	}
 	public String getPw() {
 		return pw;

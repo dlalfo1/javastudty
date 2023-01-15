@@ -8,13 +8,13 @@ public class MainClass {
 		User user = new User("admin", "123456");
 		
 		// user에 저장된 값은 user 객체의 참조값이다.
-		System.out.println(user);
+	 	System.out.println(user);
 		
 		// user 객체의 this값 확인
 		user.printThis();
 		
 		// user 객채의 필드값 확인
-		user.info();
+		// user.info();
 	}
 
 }

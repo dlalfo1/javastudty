@@ -9,7 +9,8 @@ public class CoffeeMachine {
 	
 	
 	// 메소드
-	CoffeeAndChange buyCoffee(int money, int choice) { // 돈이 들어오고 1번을 선택했다
+	CoffeeAndChange buyCoffee(int money, int choice) { // 커피를 사는 메소드를 만들것이다.
+		                                               // 돈이 들어오고 1번을 선택했다
 		
 		// 돈이 모자르면 돈을 돌려주겠다..
 		

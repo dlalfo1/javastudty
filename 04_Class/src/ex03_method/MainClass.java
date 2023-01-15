@@ -8,6 +8,8 @@ public class MainClass {
 		
 		Calculator calc = new Calculator(); 
 		
+		//double add : double값을 저장한 add변수를 선언해준거임 내가 얻은값을 저장하기위해 선언해준거야!
+		
 		double add = calc.addition(1.5, 2.5); // addition 메소드 호출 , 1.5 랑 2.5 가 인수(argument)
 		// 인수를 저장하는게 매개변수
 		
@@ -22,7 +24,7 @@ public class MainClass {
 		
 		CoffeeMachine coffeeMachine = new CoffeeMachine();
 		
-		CoffeeAndChange coffeeAndChange = coffeeMachine.buyCoffee(500,1);
+		CoffeeAndChange coffeeAndChange = coffeeMachine.buyCoffee(1500,1);
 		System.out.println(coffeeAndChange.coffee);
 		System.out.println(coffeeAndChange.change);
 		
@@ -40,21 +42,21 @@ public class MainClass {
 			car.pushAccel();
 		}
 		
-		System.out.println(car.oilPot);
-		System.out.println(car.carSpeed);
+		System.out.println(car.oilPot); // 0
+		System.out.println(car.carSpeed); // 100
 		
 		for (int n = 0; n < 11; n++){
 			car.pushBrake();
 		}
 		
-		System.out.println(car.oilPot);
-		System.out.println(car.carSpeed);
+		System.out.println(car.oilPot); // 0
+		System.out.println(car.carSpeed); // 0
 
 		
 	}	
 	
 	public static void main(String[] args) {
-			ex03();
+			ex02();
 		
 	}
 

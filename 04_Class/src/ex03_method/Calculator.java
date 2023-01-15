@@ -28,7 +28,7 @@ public class Calculator {
 	 			메소드 본문                     ex01(); 이런거
 	 		}
 	 		
-	 	2. 반환간 X, 인수 O                     int a = 0;
+	 	2. 반환값 X, 인수 O                     int a = 0;
 	 		void method(int arg) {              method(a);
 	 			메소드 본문
 	 		}

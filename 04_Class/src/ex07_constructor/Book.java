@@ -3,9 +3,9 @@ package ex07_constructor;
 public class Book {
 	
 	// 필드
-	String title;
-	String author;
-	int price;
+	String title; // 책 제목
+	String author; // 책 저자
+	int price; // 책 가격
 	
 	// 생성자
 	
@@ -33,6 +33,7 @@ public class Book {
 		System.out.println("제목 : " + title);
 		System.out.println("저자 : " + author);
 		System.out.println("가격 : " + price);
+		System.out.println();
 	}
 	
 	

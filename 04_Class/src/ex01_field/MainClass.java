@@ -4,7 +4,8 @@ public class MainClass {
 	
 	public static void ex01() {
 		
-		// 클래스 사용해서 아이디, 비밀번호, 포인트, 브이아이피 여부
+		// 클래스 사용해서 아이디, 비밀번호, 포인트, 브이아이피 여부 확인하기.
+		
 		// User 타입의 객체(클래스의 변수) 선언, 항상 선언 + 생성이 먼저
 		
 		User user1 = new User(); // 이제 user1이라는 변수를 사용해서 User 클래스의 변수 사용 가능!
@@ -86,7 +87,7 @@ public class MainClass {
 	}
 	
 	public static void main(String[] args) {
-		ex03();
+		ex01();
 	}
 
 }
