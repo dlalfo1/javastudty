@@ -1,6 +1,6 @@
 package ex01_String;
 
-public class MaInClass {
+public class Ex01_String {
 
 	public static void literal() {
 		
@@ -223,10 +223,10 @@ public class MaInClass {
 	public static void trim () {
 		
 		// trim
-		// 문자열의 압뒤에 포함된 공백 문자를 제거
+		// 문자열의 앞뒤에 포함된 공백 문자를 제거
 		
 		String str = "   hahaha   hohoho   ";
-		
+	
 		System.out.println("(" + str + ")");
 		System.out.println("(" + str.trim() + ")");
 	}
