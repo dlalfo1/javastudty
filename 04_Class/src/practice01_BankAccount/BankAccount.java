@@ -32,10 +32,13 @@ public class BankAccount {
 	}
 	
 	// 이체
-	public void transfer(BankAccount other, long money) {
+	public void transfer(BankAccount other, long money) { // BankAccount 객체는 이미 생성해놨음. 다른계좌가 필요한거니까
 		// 1. 내 통장에서 money 출금 : withdrawal(money)
 		// 2. 상대 통장에 실제로 내 통장에서 출금된 금액 입금 : other.deposit(withdrawal(money))
 		other.deposit(withdrawal(money));
+		
+		// 1. withdrawal(money) 내 통장에서 돈을 먼저 빼는 기능 먼저 실행 
+		// 2. other.deposit 다른 사람의 통장에 입금하는 기능 실행
 	}
 	
 	// 조회

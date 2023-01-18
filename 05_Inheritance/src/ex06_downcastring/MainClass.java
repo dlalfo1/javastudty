@@ -8,12 +8,10 @@ public class MainClass {
 		Person person = new Student(); // 자식을 부모타입에 저정할 수 있으나 부모타입의 메소드밖에 사용할 수 없다. 즉, 자식타입 메소드는 사용할 수 없다
 									   // eat, sleep은 부를 수 있으나 study는 없다.
 		
-		
-		
 		// Student student = new Person(); 에러. 원래 다운캐스팅은 자동으로 되지 않는다.
 		
 		// downcasting
-		Student student = (Student)person; // 자식타입의 person을 생성! 근데 굳이 왜..?
+		Student student = (Student)person; // 다운캐스팅으로 자식타입의 person을 생성! 
 		
 		// 자식, 부모 메소드 전부 사용할 수 있다.
 		student.eat(); 

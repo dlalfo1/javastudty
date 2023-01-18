@@ -15,7 +15,7 @@ public class MainClass {
 	/*
 	 	디폴트 생성자(Default Constructor)
 	 	1. 개발자가 생성자를 만들지 않으면 자동으로 사용되는 생성자이다.
-	 	2. 매개변수가 업속, 본문이 비어있는 형태이다.
+	 	2. 매개변수가 업고, 본문이 비어있는 형태이다.
 	 */
 	
 	public static void main(String[] args) {
