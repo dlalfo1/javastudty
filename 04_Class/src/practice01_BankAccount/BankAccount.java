@@ -32,6 +32,8 @@ public class BankAccount {
 	}
 	
 	// 이체
+						// 메인클래스에서 트랜스퍼 호출했을 때 other 자리에 yourAcc넣어줬으므로
+						// other는 BankAccount의 메소드를 사용할 수 있는거임
 	public void transfer(BankAccount other, long money) { // BankAccount 객체는 이미 생성해놨음. 다른계좌가 필요한거니까
 		// 1. 내 통장에서 money 출금 : withdrawal(money)
 		// 2. 상대 통장에 실제로 내 통장에서 출금된 금액 입금 : other.deposit(withdrawal(money))

@@ -47,6 +47,7 @@ public class Ex01_Math_random {
 		System.out.println(str);
 		
 		
+		
 	}
 
 	public static void main(String[] args) {

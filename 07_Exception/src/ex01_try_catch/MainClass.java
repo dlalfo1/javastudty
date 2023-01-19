@@ -1,5 +1,6 @@
 package ex01_try_catch;
 
+import java.io.FileReader; // io : input, output 입력 출력.
 import java.util.Scanner;
 
 public class MainClass {
@@ -40,12 +41,13 @@ public class MainClass {
 				System.out.println(iNumbers[i]);
 		}
 			
-		} catch(Exception e) { // 모든 예외는 Exception으로 처리 가능
+		} catch(NumberFormatException e) { // 모든 예외는 Exception으로도 처리 가능
+										// UnChecked Exception이므로 RuntimeException 가능
 			System.out.println("NumberFormatException 발생");
 			
 		}
 	}
-	
+
 	public static void ex03() {
 		
 		try {
@@ -67,8 +69,20 @@ public class MainClass {
 			System.out.println("예외가 발생했습니다.");
 		}
 	}		
+	
+	public static void ex04() {
+		
+		try {
+			FileReader fr = new FileReader("sample.txt"); // try catch문 안 넣으면 실행되지 않는 애들. // Checked Exception
+														  // 이건 finally close 기능 쓸 때도 마찬가지 거기에도 트라이 캐치 써줘야함.
+			fr.close();
+		} catch(Exception e) {
+			System.out.println("예외가 발생하였다.");
+		}
+	
+	}
 	public static void main(String[] args) {
-		ex03();
+		ex04();
 
 	}
 
