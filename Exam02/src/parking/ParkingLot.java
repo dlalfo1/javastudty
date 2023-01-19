@@ -19,15 +19,14 @@ public class ParkingLot {
 	public void addCar() {
 		
 		System.out.println("현재 등록된 차량 : " + idx + "대");
-		if(cars.length == idx) {
+		if(cars.length == idx) { // if문 시작
 			System.out.println("더 이상 차량 등록이 불가합니다.");
-			return;
-		}
+			return; // void타입에서 return문은 메소드 종료를 뜻한다.
+		} // if문 종료
 
 
 		System.out.println("차량번호 >>>");
 		String carNo = sc.next();
-		
 		System.out.println("차량모델 >>>");
 		String model = sc.next();
 		
@@ -45,7 +44,6 @@ public class ParkingLot {
     public void deleteCar() { // 20점
     	
     	
-    	
     }
     
     public void printAllCars() { // 10점
@@ -55,8 +53,8 @@ public class ParkingLot {
     
     public void manage() {
     	
-    	while(true) {
-    		
+    	while(true) { // 무한 반복문
+    	
     		System.out.println("1.추가 2.삭제 3.전체 0.종료 >>> ");
     		
     		
