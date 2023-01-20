@@ -3,92 +3,127 @@ package parking;
 import java.util.Scanner;
 
 public class ParkingLot {
-
-	private String name; // 주차장 이름
-	private Car[] cars;	// 주차장의 차들
-	private int idx; // 배열의 인덱스
-	private Scanner sc;
+	
+	private String name; 
+	private Car[] cars;
+	private int idx; // 차가 저장될 인덱스의 값! 차가 들어가기전엔 null값
+	private Scanner sc; 
 	
 	
 	public ParkingLot(String name) {
+		super();
 		this.name = name;
-		cars = new Car[10];
+		cars = new Car[10]; 
 		sc = new Scanner(System.in);
 	}
-	
+
 	public void addCar() {
 		
 		System.out.println("현재 등록된 차량 : " + idx + "대");
-		if(cars.length == idx) { // if문 시작
-			System.out.println("더 이상 차량 등록이 불가합니다.");
-			return; // void타입에서 return문은 메소드 종료를 뜻한다.
-		} // if문 종료
-
-
-		System.out.println("차량번호 >>>");
+		if(cars.length == idx) {
+			System.out.println("더 이상 차량 등록이 불가능합니다.");
+			return;
+		}
+		
+		System.out.println("차량 번호 >>> ");
 		String carNo = sc.next();
-		System.out.println("차량모델 >>>");
+		System.out.println("모델 >>> ");
 		String model = sc.next();
 		
 		Car car = new Car(carNo, model);
-		cars[idx++] = car; // cars[0] = car; cars[1] = car; cars[2] = car; 이렇게 값 저장하고 인덱스값 하나 늘려서 또 저장하고..
+		cars[idx++] = car;
 		
+		System.out.println("차량번호 " + carNo + "차량이 등록되었습니다.");
 		
-		// cars[idx++] = new Car(carNo, model); // 메소드 생성후에 객체를 생성하든, 메소드 만들면서 객체를 생성하든 상관 없음..
+		}
 		
-		
-		System.out.println("차량번호" + carNo + "차량이 등록되었습니다");
-		
-	}	
+		public void deleteCar() {
 	
-    public void deleteCar() { // 20점
-    	
-    	
-    }
-    
-    public void printAllCars() { // 10점
-    	
-    	
-    }
-    
-    public void manage() {
-    	
-    	while(true) { // 무한 반복문
-    	
-    		System.out.println("1.추가 2.삭제 3.전체 0.종료 >>> ");
-    		
-    		
-    		String choice = sc.next(); // int말고 String에 저장해야 스캐너에 숫자를 입력하든 문자를 입력하든 예외가 뜨지않고 디폴트문으로 빠질수 있음
-    								   // 입력한건 어차피 문자열로 저장되고 그걸 다 String으로 받을 수 있다.
-    		
-    		switch(choice) {
-    		case "1": 
-    			addCar(); // addCar 호출
-    			break;
-    		
-    		case "2":
-    			deleteCar(); // deleteCar 호출
-    			break;
-    		case "3":
-    			printAllCars(); // printAllCars 호출
-    			break;
-    		case "0":
-    			return; // manage 메소드 종료. break; 는 쓸 수 없다.
-    					// break는 switch문만 빠져나가고 빠져나가봤자 while문에 걸리기 때문 무한루프는 계속됨.
-    		default:
-    			System.out.println("존재하지 않는 메뉴입니다.");
-    			// 차가 계속 등록되어야 하니까 무한루프문이니 return; 하면안됨 다시 메뉴 고르는게 호출되어야함
-    		}
-    	}
-    	
-    }
-    
+			if(idx == 0) {
+				System.out.println("등록된 차량이 없습니다.");
+				return;
+			}
+						   
+			System.out.println("제거할 차량 정보 >>> ");
+			String carNo = sc.next();
+			
+			for(int i = 0; i < idx; i++) {
+				Car car = cars[i];
+				if(carNo.equals(car.getCarNo())) {
+					// 방법1. 삭제할 요소의 뒤에 있는 것들을 모두 한칸씩 앞으로 옮기기
+					System.arraycopy(cars, i + 1, cars, i, idx -i -1);
+					cars[--idx] = null; 
+					System.out.println("차량번호 " + carNo + "인 차량이 삭제되었습니다.");
+					return;
+					
+					 /* 
+					  방법2. 마지막 차량을 옮겨오기
+					  제거할 차량의 위치 : i
+					  마지막 차량 위치 : idx -1
+					  cars[i] = cars[idx -1]; // 마지막 인덱스 값은 첫번째 인덱스값으로 옮겨줌
+					  cars[--idx] = null; 
+					  return;
+					*/
+					
+				} // else로 System.out.println("대상 차량이 존재하지 않습니다"); 이거 쓰는거 아님 왜냐! 같은 차량이 없을 때 출력해야하는데 
+				  // for문 안에 넣으면 게속 출력되니까.
+			}
+			// for문 종료 후 바깥자리 (제거할 차량정보가 아무것도 없을 때)
+			System.out.println("대상 차량이 존재하지 않습니다");
+			
+		}	
+		
+		public void printAllCars() { 
+			
+			if(idx == 0) {
+				System.out.println("등록된 차량이 없습니다");
+				return;
+			}
+			System.out.println(name + "차량 목록");
+			for(int i = 0; i < idx; i++) {
+				Car car = cars[i];
+				System.out.println(car); // to.String기능으로 여기에 넣어도 출력가능
+				
+			}
+		}
+/*			for(int i = 0; i < cars.length; i++) { // 아래 두가지 방법은추천 방법은 아님.
+				Car car = cars[i];
+				if(car != null) {
+					System.out.println(car);
+				}
+			}
+			for(Car car : cars) {
+				if(car != null) {
+					System.out.println(car);
+				}
+*/			
+		
+		public void manage() { 
+			
+			while(true) {
+				
+				System.out.println("1.추가 2.삭제 3.전체 0.종료 >>> ");
+				String choice = sc.next();
+				
+				switch(choice) {
+				case "1":
+					addCar();
+					break;
+				case "2":
+					deleteCar();
+					break;
+				case "3" :
+					printAllCars();
+					return;
+				case "0" :
+					return;
+				default :
+					System.out.println("존재하지 않는 메뉴입니다.");
+				}
+		
+			}
+			
+			
+		}
+	
 }
-    
-	
-	
-	
-	
-
-	
-
