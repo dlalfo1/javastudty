@@ -9,8 +9,6 @@ public class MainClass {
 		student.sleep();
 		student.study();
 		
-		
-
 	}
 
 }
