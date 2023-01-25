@@ -110,7 +110,7 @@ public class ParkingLot {
 					addCar();
 					break;
 				case "2":
-					deleteCar();
+					deleteCar();   
 					break;
 				case "3" :
 					printAllCars();

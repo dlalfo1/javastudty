@@ -13,7 +13,7 @@ public class MainClass {
 		
 		/*
 		  * Map은 객체를 대신해서 쓸 수 있다.
-		  ㄴ
+		  
 		 	HashMap 
 		 	1. 하나의 데이터가 2개의 요소로 구성된다.
 		 	2. 용어 정리
