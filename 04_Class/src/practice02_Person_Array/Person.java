@@ -3,8 +3,8 @@ package practice02_Person_Array;
 public class Person {
 
 	// 필드
-	private String name;
-	private int age;
+	private String name; // 펄슨 이름
+	private int age; // 펄슨 나이
 	
 	// 생성자
 	public Person() {}  // new Person()
@@ -12,6 +12,7 @@ public class Person {
 		this.name = name;
 		this.age = age;
 	}
+	
 
 	// 메소드
 	public String getName() {

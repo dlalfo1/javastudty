@@ -88,7 +88,6 @@ public class MainClass {
 		// 10 = a; a를 10에 저장할 수 없으니 오류.
 		
 		System.out.println(a); // 10
-		
 	}
 	
 	// ex06 메소드 정의

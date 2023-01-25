@@ -6,7 +6,7 @@ public class ParkingLot {
 	
 	private String name; 
 	private Car[] cars;
-	private int idx; // 차가 저장될 인덱스의 값! 차가 들어가기전엔 null값
+	private int idx; // 차가 저장될 인덱스의 값! 차가 들어가기전엔 null값. 실제 저장된 차 대수라 생각하면 될 듯.
 	private Scanner sc; 
 	
 	
@@ -17,7 +17,7 @@ public class ParkingLot {
 		sc = new Scanner(System.in);
 	}
 
-	public void addCar() {
+	public void addCar() { // 차넣기
 		
 		System.out.println("현재 등록된 차량 : " + idx + "대");
 		if(cars.length == idx) {
@@ -30,14 +30,22 @@ public class ParkingLot {
 		System.out.println("모델 >>> ");
 		String model = sc.next();
 		
+		// 사용자가 입력한 차이름과 모델명을 넣어서 객체를 만들어줌
+		// 주차장에 차 넣었으니까 차가 생겨야지!
+		
 		Car car = new Car(carNo, model);
+		
 		cars[idx++] = car;
+		/* cars[idx] = car;  위랑 아래코드랑 같은거임
+		    idx++;
+		*/
+		// 여기서 idx는 cars[i]랑 다른거임! idx와 인덱스값은 다른것.
 		
 		System.out.println("차량번호 " + carNo + "차량이 등록되었습니다.");
 		
 		}
 		
-		public void deleteCar() {
+		public void deleteCar() { // 차 빼기
 	
 			if(idx == 0) {
 				System.out.println("등록된 차량이 없습니다.");
@@ -47,8 +55,10 @@ public class ParkingLot {
 			System.out.println("제거할 차량 정보 >>> ");
 			String carNo = sc.next();
 			
-			for(int i = 0; i < idx; i++) {
-				Car car = cars[i];
+			for(int i = 0; i < 
+					
+					idx; i++) {
+				Car car = cars[i]; // 이미 cars[i]에 차가 저장되어 있으니 다시 담을 변수를 만들어서 넣어줌
 				if(carNo.equals(car.getCarNo())) {
 					// 방법1. 삭제할 요소의 뒤에 있는 것들을 모두 한칸씩 앞으로 옮기기
 					System.arraycopy(cars, i + 1, cars, i, idx -i -1);
@@ -59,9 +69,10 @@ public class ParkingLot {
 					 /* 
 					  방법2. 마지막 차량을 옮겨오기
 					  제거할 차량의 위치 : i
-					  마지막 차량 위치 : idx -1
+					  마지막 차량 위치 : idx -1 (인덱스 값이니까 실제 저장한 차
 					  cars[i] = cars[idx -1]; // 마지막 인덱스 값은 첫번째 인덱스값으로 옮겨줌
-					  cars[--idx] = null; 
+					  --idx;
+					  cars[idx] = null; 
 					  return;
 					*/
 					
@@ -73,7 +84,7 @@ public class ParkingLot {
 			
 		}	
 		
-		public void printAllCars() { 
+		public void printAllCars() { // 차 조회하기
 			
 			if(idx == 0) {
 				System.out.println("등록된 차량이 없습니다");

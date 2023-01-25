@@ -65,7 +65,7 @@ public class MainClass {
 		// 정수 타입
 		
 		int age = 46;
-		long money = 1000L; // long타입에 숫자를 저장할 때는 끝에 대문자 L을 붙여준다.
+		long money = 1000L;  // 대문자 L을 붙여준다.
 							// 하지만 롱타입 범위보다 더 작은 정수를 저장할 때엔 붙여주지 않아도 된다.
 		System.out.println(age);
 		System.out.println(money);
@@ -109,9 +109,6 @@ public class MainClass {
 		System.out.println("\'문자열 연습\'"); 
 		System.out.println("\t문자열 연습\""); 
 		System.out.println("문자열 \n연습"); 
-	
-		
-		//이거 추가되나 보기.
 		
 	}
 

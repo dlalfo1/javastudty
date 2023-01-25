@@ -3,8 +3,8 @@ package practice02_Person_Array;
 public class Home {
 
 	// 필드
-	private Person[] arr;
-	private int count;
+	private Person[] arr; // 펄슨 담을 배열 arr사용해서 쓸거임.
+	private int count; // 펄슨 수
 	
 	// 생성자
 	public Home(int count) {

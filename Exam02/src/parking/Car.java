@@ -17,7 +17,24 @@ public class Car {
 	private String model; 
 
 	
-	public Car() {
-		
-	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }	
