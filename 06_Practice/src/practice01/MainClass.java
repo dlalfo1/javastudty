@@ -1,5 +1,6 @@
 package practice01;
 
+
 public class MainClass {
 
 	// 문제1. 가위바위보
@@ -32,6 +33,8 @@ public class MainClass {
 	// 질문 : 대한민국의 수도는? >>> 인천
 	// 오답입니다.
 	public static void ex04() {	
+		
+		
 		
 	}
 	

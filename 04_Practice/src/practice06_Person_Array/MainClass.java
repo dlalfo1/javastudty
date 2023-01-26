@@ -7,9 +7,9 @@ public class MainClass {
 		String[] nameList = {"정숙", "상철", "미희"};
 		int[] ageList = {20, 30, 40};
 		
-		Person[] arr = new Person[3];
+		Person[] arr = new Person[3]; // 배열 길이가 3인 배열이 만들어짐.
 		
-		for(int i = 0; i < arr.length; i++) {
+		for(int i = 0; i < arr.length; i++) { // 0, 1, 2 -> for문 총 3번 돈다
 			arr[i] = new Person();
 			arr[i].setName(nameList[i]);
 			arr[i].setAge(ageList[i]);

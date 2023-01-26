@@ -16,7 +16,7 @@ public class Bakery {
 		this.bakeryMoney = bakeryMoney;
 	}
 
-	// 판매 메소드
+	// 판매 메소드(커스터머가 사려면 빵집에서 빵을 먼저 팔아야 하니까 sell 메소드 먼저 만들어줌)
 	// 구매자에게 돈을 받는다. 구매자에게 빵과 잔돈을 준다.
 	public BreadAndChange sell(int money) {
 		

@@ -12,7 +12,7 @@ public class MainClass {
 		2. 파일, 디렉터리(폴더)를 관리하는 클래스이다.
 		3.  객체 생성 방법
 			1) new File(경로, 파일)
-			2) new File(파일)
+			2) new Fle(파일)
 		4. 경로 구분 방법	
 			1) 윈도우 : 백슬래시(\)
 			2) 리눅스 : 슬래쉬(/)
@@ -25,7 +25,6 @@ public class MainClass {
 		// 디렉터리 관련 필수 작업
 		 
 		File dir = new File("C:" + File.separator + "storage");		// C드라이브 아래 storage 폴더를 의미한다.
-		
 		
 		// 없으면 만들고, 있으면 지운다.
 		

@@ -5,11 +5,11 @@ package practice03_Bakery;
 public class Customer {
 
 	// 필드
-	private int breadCount;  // 구매한 빵의 개수
+	private int breadCount;  // 구매한 빵의 개수 
 	private int money;       // 가지고 있는 돈
 	
 	// 생성자
-	// 구매자는 돈만 가지고 빵집에 빵을 사러 가므로 money만 챙긴다. 
+	// 구매자는 돈만 가지고 빵집에 빵을 사러 가므로 money만 챙긴다. 브레드카운트는 생성자 만들필요가 없음
 	public Customer(int money) {
 		this.money = money;
 	}

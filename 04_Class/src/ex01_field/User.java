@@ -21,7 +21,5 @@ public class User { // User라는 객체를 만들기 위한 하나의 설계도
 	
 	Address addr;  // 초기화 값 null
 				   // 
-	
-	
 
 }

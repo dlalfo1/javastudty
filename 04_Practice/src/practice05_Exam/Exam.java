@@ -3,10 +3,10 @@ package practice05_Exam;
 public class Exam {
 	
 	// 필드
-	private String examName;
-	private int kor;
-	private int eng;
-	private int mat;
+	private String examName; // 시험 이름
+	private int kor; // 국어 점수
+	private int eng; // 영어 점수
+	private int mat; // 수학 점수
 	
 	// 생성자
 	public Exam(String examName) {

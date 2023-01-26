@@ -16,6 +16,8 @@ public class BreadAndChange {
 	}
 
 	// 메소드
+	// 다른 클래스에서 갖다써야하니까 게터세터 만들어줌.
+	
 	public int getBreadCount() {
 		return breadCount;
 	}
