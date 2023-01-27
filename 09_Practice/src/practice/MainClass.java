@@ -36,28 +36,10 @@ public class MainClass {
 			dir.mkdirs();
 		} 
 	}
-	
-	public static void ex02() {
-		
-		File dir = new File("C:" + File.separator + "storage");
-			if(dir.exists() == false) {
-				dir.mkdirs();
-		}
-		
-	    try {
-		File file = new File(dir, "myfile.txt");
-		if(file.exists() == false) {
-			file.createNewFile();
-		} else {
-			file.delete();
-		}
-	    } catch(Exception e) {
-	    	System.out.println(e);
-	    }
-	}
-	
+
 	// 문제2. C:\Program Files\Java\jdk-11.0.17 경로의 파일 목록을 아래와 같이 출력하시오.
-		/*
+		
+	/*
 		2023-01-04  오후 02:19    <DIR>          bin
 		2023-01-04  오후 02:19    <DIR>          conf
 		2023-01-04  오후 02:19    <DIR>          include
@@ -69,11 +51,10 @@ public class MainClass {
 		               2개 파일               1,462 바이트
 		*/
 	
-	public static void ex03() {
+	public static void ex02() {
 		
-		String sep = File.separator;
 		
-		File dir = new File("C:" + sep + "Program Files" + sep + "Java" + sep + "jdk-11.0.17");
+		File dir = new File("C:" + File.separator + "Program Files" + File.separator + "Java" + File.separator + "jdk-11.0.17");
 		
 		if(dir.exists()) {
 			
@@ -102,9 +83,9 @@ public class MainClass {
 		}
 	}	
 	
-	public static void ex04() {
-		// 문제3. C:\storage 디렉터리를 삭제하시오.
-		// 파일이 저장된 디렉터리는 지워지지 않으므로 먼저 디렉터리에 저장된 파일을 삭제해야 한다.
+	// 문제3. C:\storage 디렉터리를 삭제하시오.
+	// 파일이 저장된 디렉터리는 지워지지 않으므로 먼저 디렉터리에 저장된 파일을 삭제해야 한다.
+	public static void ex03() {
 		
 		File dir = new File("C:" + File.separator + "storage");
 		
@@ -130,10 +111,11 @@ public class MainClass {
 		}
 		
 	}
-	public static void ex05() {
+	
+	// 문제4. 사용자로부터 입력받은 문자열을 C:\storage\diary.txt 파일로 보내시오.
+	// 총 5개 문장을 입력받아서 보내시오.
+	public static void ex04() {
 		
-		// 문제4. 사용자로부터 입력받은 문자열을 C:\storage\diary.txt 파일로 보내시오.
-		// 총 5개 문장을 입력받아서 보내시오.
 		
 		Scanner sc = new Scanner(System.in);
 		String[] sentences = new String[5];
@@ -167,11 +149,12 @@ public class MainClass {
 			sc.close();			
 	
 	}
-	public static void ex06() {
+	
+	// 문제5. 예외가 발생한 경우 예외 메시지와 예외 발생시간을 저장한 C:\storage\log.txt 파일을 생성하시오.
+	// 예시)
+	// 2023-01-26 12:08:30 / by zero
+	public static void ex05() {
 		
-		// 문제5. 예외가 발생한 경우 예외 메시지와 예외 발생시간을 저장한 C:\storage\log.txt 파일을 생성하시오.
-		// 예시)
-		// 2023-01-26 12:08:30 / by zero
 		
 		try {
 			
@@ -233,6 +216,16 @@ public class MainClass {
 		} 
 		
 	}
+	
+	// 문제6. C:\storage\diary.txt 파일을 C:\storage2\diary.txt 파일로 이동하시오.
+	// 이동에 소요된 시간을 출력하시오.
+	
+	
+		public static void ex06() {
+			
+		}
+	
+			
 
 	public static void main(String[] args) {
 		ex06();

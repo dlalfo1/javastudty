@@ -8,7 +8,7 @@ public class Person {
 	
 	// 생성자
 	public Person() {}  // 디폴트 생성자
-	
+
 	public Person(String name, int age) {  // 매개변수 받아서 필드변수 name, age 초기화 하기
 		this.name = name;
 		this.age = age;
