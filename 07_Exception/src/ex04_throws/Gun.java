@@ -16,7 +16,7 @@ public class Gun {
 											 // 상수로 두는 이유는 값이 변하지 않게 하기 위하여
 	// 총알 넣기
 	public void reload(int bullet) throws RuntimeException { // reload 메소드를 호출하는 곳으로 예외를 던지겠다.
-															 // 여기서 던진 예외가 메인메소드에서 reldad 메소드를 호출하는 곳으로 가짐.
+															 // 여기서 던진 예외가 메인메소드에서 reload 메소드를 호출하는 곳으로 가짐.
 		if(this.bullet + bullet > MAX_BULLET) {
 			throw new RuntimeException("장전 불가능");
 		}

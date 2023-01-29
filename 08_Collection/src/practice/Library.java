@@ -52,7 +52,7 @@ public class Library {
 						Book deletedBook = books.remove(i); // remove(i)는 삭제된 요소(Book)를 반환한다.
 														// 배열 사용할 땐 빈구멍 막는걸 또 했었는데 remove메소드 기능이 그걸 대신해줌. 
 														// 삭제하고 뒤에있는 인덱스값 앞에 넣어줌. (arrayCopy 기능이 들어있다.)
-	
+		
 						
 						
 						// Book deletedBook = 생략 가능.	
@@ -63,8 +63,8 @@ public class Library {
 			}
 			
 			throw new RuntimeException(isbn + "isbn을 가진 책이 없습니다.");
-	}	
-	
+		}	
+
 	private void findBook() throws RuntimeException {
 		
 		System.out.println("=== 책 조회하기 ===");

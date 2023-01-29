@@ -79,8 +79,7 @@ public class JSONMainClass {
 		product2.put("maker", "LG");
 		product2.put("price", 200);
 		
-		JSONArray products = new JSONArray();
-		products.put(product1);
+		JSONArray products = new JSONArray(); // JSONArray에 요소 추가할 때도 put메소드 사용.
 		products.put(product2);
 		
 		System.out.println(products);
@@ -89,10 +88,12 @@ public class JSONMainClass {
 	
 	public static void ex03() { // 중요
 		
-	// String 형식의 JSON 데이터
+		// String 형식의 JSON 데이터
 		String str = "{\"name\":\"james\",\"age\":30,\"height\":180.5,\"isAlive\":true}";
 					
 		// JSONObject 객체 생성
+		// JSONObject obj = new JSONObject(str);
+		
 		JSONObject obj = new JSONObject(str);
 					
 		// JSONObject 객체를 구성하는 프로퍼티 값 가져오기
@@ -118,12 +119,14 @@ public class JSONMainClass {
 			
 		// 1. 일반 for문
 		for(int i = 0; i < products.length(); i++) {
-			JSONObject obj = products.getJSONObject(i); // 제이슨 오브젝트 객체 중 하나를 가져와서 obj에 넣고
+			// 이런 건 전부 JSON 라이브러리의 메소드들이니까 문법 암기하기.
+			JSONObject obj = products.getJSONObject(i); // 배열의 인덱스 하나를 가져와서 제이슨 오브젝트 객체에 하나 담는다.
 			String model = obj.getString("model"); // 그 객체에서 String값을 가져온다.
 			String maker = obj.getString("maker");
 			int price = obj.getInt("price");
 			System.out.println(model + "," + maker + "," + price);
 		}
+		
 		
 		// 2. 향상 for문. JSONObject가 아니라 Object로 받아야함.
 		for(Object obj : products) {
@@ -161,7 +164,7 @@ public class JSONMainClass {
 		List<Map<String, Object>> products = Arrays.asList(product1, product2, product3);
 		
 		JSONArray arr = new JSONArray(products);
-		String content = arr.toString(); // 만든파일에 글자를 넣어주려면 이 작업이 꼭 필요하다. 스트링화 해주어야함
+		String content = arr.toString(); // 만든 파일에 글자를 넣어주려면 이 작업이 꼭 필요하다. 스트링화 해주어야함
 		
 		File dir = new File("C:" + File.separator + "storage");
 		if(dir.exists() == false) {

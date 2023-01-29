@@ -29,7 +29,7 @@ public class MainClass {
 		 	
 		 	
 		 	* Key를 통해 Value값을 얻는다.
-		 	* 많은 양의 데이터를 검색하는데 매위 뛰어나다.
+		 	* 많은 양의 데이터를 검색하는데 매우 뛰어나다.
 		 */
 
 		// Person 정보를 HashMap으로 만들기 (Key관리 용도로 만들어보기)
@@ -61,7 +61,7 @@ public class MainClass {
 		dictionary.put("autumn", "가을");
 		dictionary.put("winter", "겨울");
 		
-		// Value 가져오기
+		// Value 가져오기(키값으로 밸류 관리하니까 키값을 가져와야한다.)
 		// get(Key)
 		String season = dictionary.get("winter");
 		System.out.println(season);
@@ -80,6 +80,7 @@ public class MainClass {
 		
 		// 1. Key만 모두 가져온 뒤 해당 key값을 가진 Value를 가져오기
 		Set<String> keySet = dictionary.keySet(); // Set에는 인덱스가 없음 그러니 for문도 쓸 수 없음 향상 for문 가능
+												  // dictionary map의 키값만 가져와서 Set으로 돌려준다.
 		for(String key : keySet) {
 			System.out.println(key + ":" + dictionary.get(key));
 		}

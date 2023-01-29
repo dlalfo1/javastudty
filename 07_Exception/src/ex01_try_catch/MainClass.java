@@ -22,7 +22,7 @@ public class MainClass {
 			}
 			
 		} catch(Exception e) { // Unchecked의 Exception의 경우 RuntimeException으로도 처리 가능.
-						  // 예외 객체의 이름은 관습적으로 e라고 적는다
+							   // 예외 객체의 이름은 관습적으로 e라고 적는다
 			System.out.println("ArrayIndexOutOfBoundsException 발생");  // 문제가 생기면 catch문도 실행
 		}
 		
@@ -82,7 +82,7 @@ public class MainClass {
 	
 	}
 	public static void main(String[] args) {
-		ex04();
+		ex03();
 
 	}
 

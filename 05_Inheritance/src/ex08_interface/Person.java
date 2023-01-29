@@ -25,4 +25,7 @@ public interface Person{
 	// 추상(abstract) 메소드 (본문이 없는 메소드)
 	// 인터페이스에선 추상메소드에 abstract 키워드 생략 가능하다.
 	public void study();
+	
+	
+	
 }

@@ -42,7 +42,7 @@ public class MainClass {
 		Person person1 = new Person("홍길동"); 
 		Person person2 = new Person("홍길동"); // new 연산자를 썼기 때문에 새로운 참조값이 하나 생기고 거기에 홍길동을 저장.
 		
-		if(person1.equals(person2)) { // 문자열을 비교한게 아니라 객체의 참조값(주소)를 비교한거라 false.
+		if(person1.equals(person2)) { 
 			System.out.println("같은 Person이다.");
 		} else {
 			System.out.println("다른 Person이다.");
@@ -61,7 +61,7 @@ public class MainClass {
 													
 	}
 	public static void main(String[] args) {
-		ex01();
+		ex03();
 	
 	}
 

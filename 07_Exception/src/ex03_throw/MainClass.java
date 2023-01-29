@@ -15,7 +15,7 @@ public class MainClass {
 		} catch(Exception e) {
 			
 			System.out.println(e.getClass().getName()); // 예외 클래스 이름 확인
-			System.out.println(e.getMessage()); // 예외 메세지 화긴
+			System.out.println(e.getMessage()); // 예외 메세지 확인
 		}
 	}
 	

@@ -6,8 +6,8 @@ public class MainClass {
 		
 		// static 요소는 객체를 이용해서 호출할 수 있으나, 권장하지 않는다.
 		
-		MyMath myMath = new MyMath();
-		System.out.println(myMath.PI);
+	   	MyMath myMath = new MyMath();
+		System.out.println(MyMath.PI);
 		
 		MyMath yourMath = new MyMath();
 		System.out.println(yourMath.PI); // PI에 노란밑줄이 뜨는건 에러는 아니나 수정하는게 좋다는 뜻.

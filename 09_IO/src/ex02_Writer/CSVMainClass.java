@@ -51,16 +51,16 @@ public class CSVMainClass {
 		product3.put("maker", "삼성");
 		product3.put("price", 300);
 		
-		
+		// 리스트에 맵 저장하기
 		List<Map<String, Object>> products = Arrays.asList(product1, product2, product3);
 	
 			
 		/* 
-		    위에꺼도 되고 이거 써도 된다. 어레이리스트 생성시에 초기화 해주는거랑 이거랑 같음.
-			List<Map<String, Object>> products2 = new ArrayList<Map<String,Object>>();
-			products2.add(product1);
-			products2.add(product2);
-			products2.add(product3);
+		    위에꺼도 되고 이거 써도 된다. ArrayList 생성시에 초기화 해주는거랑 이거랑 같음.
+			List<Map<String, Object>> products = new ArrayList<Map<String,Object>>();
+			products.add(product1);
+			products.add(product2);
+			products.add(product3);
 		*/
 		
 		File dir = new File("C:" + File.separator + "storage");	
@@ -71,10 +71,10 @@ public class CSVMainClass {
 		
 		File file = new File(dir, "product.csv");
 		
-		try (PrintWriter out = new PrintWriter(file)){ 
+		try (PrintWriter out = new PrintWriter(file)){  // PrintWriter : 텍스트 파일에 데이터를 쓰는 데 사용할 수 있다.
 			
-			for(int i = 0; i < products.size(); i++) {
-				Map<String, Object> product = products.get(i); // ArrayList에 있는거 꺼내기
+			for(int i = 0; i < products.size(); i++) { // 배열에선 length가 길이고 List에선 size가 길이이다.
+				Map<String, Object> product = products.get(i); // ArrayList에 있는것 꺼내기
 				out.println(product.get("model") + "," + product.get("maker") + "," + product.get("price"));
 			}
 		} catch(IOException e) {

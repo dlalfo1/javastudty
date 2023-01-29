@@ -15,7 +15,7 @@ public class MainClass {
 			1) 입력 스트림 : 입력만 받을 수 있다.
 			2) 출력 스트림 : 출력만 할 수 있다.
 	*/
-	
+
 	/*
 		Writer
 		1. 문자 기반의 출력 스트림이다.
@@ -121,7 +121,7 @@ public class MainClass {
 		dir.mkdir();
 	}
 	
-	File file = new File(dir, "ex03.txt");
+	File file = new File(dir, "ex02.txt");
 	
 	try (FileWriter fw = new FileWriter(file)){ 
 		
@@ -151,7 +151,7 @@ public class MainClass {
 			dir.mkdir();
 		}
 		
-		File file = new File(dir, "ex04.txt");
+		File file = new File(dir, "ex03.txt");
 		
 		// 메인 스트림 선언
 		FileWriter fw = null;
@@ -194,12 +194,12 @@ public class MainClass {
 			dir.mkdir();
 		}
 		
-		File file = new File(dir, "ex05.txt");
+		File file = new File(dir, "ex04.txt");
 		
 		try(BufferedWriter bw = new BufferedWriter(new FileWriter(file))){
 			
 			bw.write("안녕하세요 반갑습니다.");
-			System.out.println("ex05.txt 파일이 생성되었습니다.");
+			System.out.println("ex04.txt 파일이 생성되었습니다.");
 			
 		} catch (IOException e) {
 			e.printStackTrace();

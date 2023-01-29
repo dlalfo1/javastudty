@@ -50,7 +50,7 @@ public class MainClass {
 		
 		int sum = 0;
 		
-		for(int i = 0, length = list.size(); i < length; i++) { // 이해가 안감...
+		for(int i = 0, length = list.size(); i < length; i++) { 
 			sum +=  list.get(i);
 		}
 		
@@ -69,17 +69,14 @@ public class MainClass {
 	
 		// 아이디만 출력하기
 		for(int i = 0, length = userList.size(); i < length; i++) {
-			System.out.println(userList.get(i).getId()); // ㅋ..
+			System.out.println(userList.get(i).getId()); 
 			
-			
-
 		}
-		
 		
 	}
 	
 	public static void main(String[] args) {
-		ex03();
+		ex01();
 	}
 
 }

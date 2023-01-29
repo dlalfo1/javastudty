@@ -24,11 +24,19 @@ public class MainClass {
 		
 		// 디렉터리 관련 필수 작업
 		 
-		File dir = new File("C:" + File.separator + "storage");		// C드라이브 아래 storage 폴더를 의미한다.
+		/* File(String fileName) : 주어진 문자열을 이름으로 갖는 파일을 위한 File 인스턴스를 생성한다.
+		  
+		   파일뿐만 아니라 디렉토리도 같은 방법으로 다룬다.
+			
+	       여기서 fileName은 주로 경로를 포함해서 지정해주지만, 파일 이름만 사용해도 프로그램이 실행되는 위치를 경로로 간주한다.
+		*/
+
+		File dir = new File("C:" + File.separator + "storage");  // C드라이브 아래 storage 폴더를 의미한다.
+		// *주의* File 인스턴스를 생성했다고 해서 파일이나 디렉토리가 생성되는 것은 아니다.			
+		// 파일명이나 디렉토리명으로 지정된 문자열이 유효하지 않더라도 컴파일 에러나 예외를 발생시키지 않는다.
 		
-		// 없으면 만들고, 있으면 지운다.
-		
-		if(dir.exists() == false) {
+		if(dir.exists() == false) { // 없으면 만들고, 있으면 지운다.
+			
 			dir.mkdirs();
 			System.out.println("C:" + File.separator + "storage 생성 완료");
 		} else {
@@ -98,15 +106,15 @@ public class MainClass {
 		File[] files = dir.listFiles();
 		
 		for(int i = 0; i < files.length; i++) {
-			if(files[i].isHidden() == false) {
-			System.out.println(files[i].getName());
+			if(files[i].isHidden() == false) { // isHidden 메소드 : 숨긴 파일인지 확인
+			System.out.println(files[i].getName()); // 즉 숨긴 파일 빼고 모두 이름을 가져와서 출력하다.
 			}
 		}
 	}
 	
 	public static void main(String[] args) throws IOException { // main 메소드를 호출하는 곳으로 예외 처리를 넘긴다. (개발자가 try-catch 하지 않겠다.)
 		
-		ex03();
+		ex04();
 	}
 
 }

@@ -5,15 +5,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class MainClass {
-
 	
-	/*
+	 /*
 	  	Set
-	 	1. 저장된 요소들에 인덱스가 없다. -> 저장 순서가 없다.
+	 	1. 저장된 요소들에 인덱스가 없다. -> 저장 순서가 없다. (List는 인덱스가 있다.)
 	 	2. 중복 저장이 되지 않는다. (로또문제에서 난수 발생시킬 때 값이 중복으로 나오지 않게 할 때 사용하기....)
 	 */
-	
-	
+
 	
 	// List와 Set는 사용구현법이 비슷하다. 왜냐 부모클래스(Collection 인터페이스)가 같기 때문에
 	
