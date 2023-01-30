@@ -5,9 +5,10 @@ import java.util.Scanner;
 public class SeatGroup {
 
 	private String seatType;  // "S", "R", "A" 중 하나를 가짐
-	private Seat[] seats;
+	private Seat[] seats; // 
 	private Scanner sc;
 	
+	// seatTypes[i], seatCount[i]
 	public SeatGroup(String seatType, int count) {  // new SeatGroup("S", 20) : S석이 20개 있다.
 		this.seatType = seatType;
 		seats = new Seat[count];

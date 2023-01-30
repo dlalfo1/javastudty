@@ -1,0 +1,72 @@
+package ex04_OutPutSteram;
+
+import java.io.Serializable;
+
+
+/*
+		ObjectOutPutStream/ObjectInPutStream을 통해서
+		객체 입출력을 수행하려면 "반드시" 직렬화 처리를 해야 한다.
+	*/
+
+	/*
+		직렬화 처리 방법
+		1.java.io.Serializable 인터페이스를 구현한다. (필수)
+		2.serialVersionUID 필드 값을 정의한다. (선택_
+	*/
+
+public class Person implements Serializable{ // 필수
+	
+	private static final long serialVersionUID = -5830442971523281668L; // 클래스에 implements Serializable로 인터페이스 구현해주면
+																		// 클래스에 오류메세지 뜰텐데 해결방안으로 제시된 거 보고 필드값 생성해주면 됨.
+	private String name;
+	private int age;
+	private double height;
+	private boolean isAlive;
+	
+	
+	// 기본생성자 + 게터세터와 매개변수 있는 생성자  두개 전부 만들어두는 이유는 언제 무엇을 쓸지 모르기때문이다. 보통 다 만들어준다.
+	
+	public Person() { // 디폴트 생성자 
+		
+	}
+	
+	public Person(String name, int age, double height, boolean isAlive) { // 매개변수가 있는 생성자
+		super();
+		this.name = name;
+		this.age = age;
+		this.height = height;
+		this.isAlive = isAlive;
+	}
+
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public double getHeight() {
+		return height;
+	}
+	public void setHeight(double height) {
+		this.height = height;
+	}
+	public boolean isAlive() {
+		return isAlive;
+	}
+	public void setAlive(boolean isAlive) {
+		this.isAlive = isAlive;
+	}
+
+	@Override
+	public String toString() {
+		return "Person [name=" + name + ", age=" + age + ", height=" + height + ", isAlive=" + isAlive + "]";
+	}
+	
+
+}
