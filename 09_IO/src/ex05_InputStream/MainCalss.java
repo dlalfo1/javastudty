@@ -139,19 +139,17 @@ public class MainCalss {
 			
 			bis = new BufferedInputStream(new FileInputStream(file));
 			
-			byte[]b = new byte[4];
+			byte[] b = new byte[4];
 			int readByte = 0;
-			
 			StringBuilder sb = new StringBuilder();
 			
-			while((readByte = bis.read()) != -1) {
+			while((readByte = bis.read(b)) != -1) {
 				sb.append(new String(b, 0, readByte));
-				
 			}
 			
 			System.out.println(sb.toString());
 			
-		} catch (IOException e) {
+		} catch(IOException e) {
 			e.printStackTrace();
 		} finally {
 			try {
@@ -163,10 +161,7 @@ public class MainCalss {
 			}
 		}
 		
-		
-		
 	}
-	
 	
 	public static void ex03_complete() {
 		
@@ -185,6 +180,7 @@ public class MainCalss {
 			StringBuilder sb = new StringBuilder();
 			
 			while((line = br.readLine()) != null) { // readLine메소드는 -1과 비교하지 않는다. null값과 비교한다.
+													 
 				sb.append(line + "\n");
 			}
 			
@@ -278,7 +274,7 @@ public class MainCalss {
 		}
 	}
 	public static void main(String[] args) {
-		ex02_complete();
+		ex04();
 	}   
 
 }

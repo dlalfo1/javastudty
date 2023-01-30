@@ -282,8 +282,12 @@ public class MainClass {
 		
 		try {
 			
-			br = new BufferedReader(new InputStreamReader(System.in)); // System.in은 InPut으로 받아줘야하는데 BufferedReader로 받을거니까
-																	   // InputStreamReader가 필요하다.
+			br = new BufferedReader(new InputStreamReader(System.in)); 
+			
+			// System.in은 InPut으로 받아줘야하는데 BufferedReader로 받을거니까
+																	 
+			// InputStreamReader가 필요하다.
+			
 			System.out.println("문장 입력 >>> ");
 			String sentence = br.readLine();
 			
@@ -347,8 +351,8 @@ public class MainClass {
 		File from = new File("C:" + File.separator + "GDJ61" + File.separator + "installer", "eclipse-jee-2021-03-R-win32-x86_64.zip");
 		File to = new File("C:" + File.separator + "storage", "eclipse.zip");
 		
-		BufferedInputStream bin = null;
-		BufferedOutputStream bout = null;
+		BufferedInputStream bin = null; // 이클립스에 보여주기
+		BufferedOutputStream bout = null; // 외부 파일로 내보내기
 		
 		try {
 			
@@ -382,7 +386,7 @@ public class MainClass {
 	}
 	
 	public static void main(String[] args) {
-		ex09();
+		ex07();
 	}
 
 }
