@@ -140,7 +140,8 @@ public class MainClass {
 	
 	public static void ex04() {
 		
-		// 변슈를 그대로 출력하는 DataOutPutSteram
+		// 변수를 그대로 출력하는 DataOutPutSteram
+		// 변수에 저장된 값의 데이터 타입에 따라 출력하는 메소드들이 있다.
 		
 		File dir = new File("C:" + File.separator + "storage");
 		File file = new File(dir, "ex04.dat");
@@ -227,7 +228,7 @@ public class MainClass {
 	}
 
 	public static void main(String[] args) {
-		ex01();
+		ex04();
 	}
 
 }

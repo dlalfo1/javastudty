@@ -11,7 +11,7 @@ import java.io.Serializable;
 	/*
 		직렬화 처리 방법
 		1.java.io.Serializable 인터페이스를 구현한다. (필수)
-		2.serialVersionUID 필드 값을 정의한다. (선택_
+		2.serialVersionUID 필드 값을 정의한다. (선택)
 	*/
 
 public class Person implements Serializable{ // 필수
@@ -24,7 +24,8 @@ public class Person implements Serializable{ // 필수
 	private boolean isAlive;
 	
 	
-	// 기본생성자 + 게터세터와 매개변수 있는 생성자  두개 전부 만들어두는 이유는 언제 무엇을 쓸지 모르기때문이다. 보통 다 만들어준다.
+	// 기본생성자 + 게터세터와 매개변수 있는 생성자 
+	// 두개 전부 만들어두는 이유는 언제 무엇을 쓸지 모르기때문이다. 보통 다 만들어준다.
 	
 	public Person() { // 디폴트 생성자 
 		

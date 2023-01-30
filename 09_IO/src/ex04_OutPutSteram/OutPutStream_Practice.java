@@ -1,8 +1,14 @@
 package ex04_OutPutSteram;
 
+import java.io.BufferedOutputStream;
+import java.io.DataOutput;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.Arrays;
+import java.util.List;
 
 public class OutPutStream_Practice {
 
@@ -103,11 +109,136 @@ public class OutPutStream_Practice {
 		
 		*/
 		
+		File dir = new File("C:" + File.separator + "storage");
+		File file = new File(dir, "ex03.bin");
+		
+		BufferedOutputStream bos = null;
+		
+		try {
+			
+			bos = new BufferedOutputStream(new FileOutputStream(file));
+			
+			
+			bos.write("반갑습니다\n또만나요".getBytes("UTF-8")); // String값에 문자열 안 넣어주고 바로 써도 가능하다.
+			
+			System.out.println("ex03.bin 파일 생성 후 반갑습니다 또만나요 입력 완료");
+			
+		} catch(IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(bos != null) {
+					bos.close();
+				}
+			} catch(IOException e) {
+				e.printStackTrace();
+			}
+		}
 		
 		
 	}
+	
+	
+	public static void ex04() {
+		
+		/*
+		    String name = "에밀리"; // 18바이트
+			int age = 30; // 1바이트
+			double height = 180.5; // 1바이트
+			boolean isAlive = true;
+			
+			ex04.dat 파일 만들기
+			DataOutputStream 사용하기
+			
+		*/
+		
+		File dir = new File("C:" + File.separator + "storage");
+		File file = new File(dir, "ex04.dat");
+		
+		DataOutputStream dos = null;
+		
+		try {
+			
+			dos = new DataOutputStream(new FileOutputStream(file));
+			
+			String name = "에밀리"; 
+			int age = 30;
+			double height = 180.5;
+			boolean isAlive = true;
+			
+			dos.writeUTF(name);
+			dos.writeInt(age);
+			dos.writeDouble(height);
+			dos.writeBoolean(isAlive);
+			
+			System.out.println("ex04.dat 파일 생성");
+			
+			
+		} catch(IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(dos != null) {
+					dos.close();
+				}
+			} catch(IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public static void ex05() {
+		
+		// 객체를 그대로 출력하는 ObjectOutPutStream
+		// "ex05.dat" 파일 생성
+		// Preson List로 만들어주기
+		
+		File dir = new File("C:" + File.separator + "storage");
+		File file = new File(dir, "ex05.dat");
+		
+		ObjectOutputStream oos = null;
+		
+		
+		try {
+			
+			oos = new ObjectOutputStream(new FileOutputStream(file));
+			
+			// 매개변수 있는 생성자 초기화
+			List<Person> people = Arrays.asList(
+					new Person("에밀리", 30, 180.5, true),
+					new Person("제시카", 35, 190.5, true)
+					);
+			
+			// 디폴트 생성자 초기화
+			Person person = new Person();
+			person.setName("제임스");
+			person.setAge(40);
+			person.setHeight(170.5);
+			person.setAlive(false);
+			
+			// 객체 그대로 넣어준다
+			
+			oos.writeObject(person);
+			oos.writeObject(people);
+			
+			System.out.println("ex05.dat 파일 생성 완료");
+			
+			
+		} catch(IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(oos != null) {
+					oos.close();
+				}
+			} catch(IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
 	public static void main(String[] args) {
-		ex02();
+		ex05();
 	
 	
 	}

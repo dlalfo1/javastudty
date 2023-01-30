@@ -95,7 +95,7 @@ public class MainCalss {
 	
 	public static void ex02_complete() { // ex02 해결방법
 		
-		// 바이트 입력 스트림을 문자 입력 스트림으로 변환하는 InPutStreamReader
+		// 바이트 입력 스트림을 문자 입력 스트림으로 변환하는 InputStreamReader
 		
 		File file = new File("C:" + File.separator + "storage", "ex02.bin");
 		
@@ -103,18 +103,16 @@ public class MainCalss {
 		
 		try {
 			
-			isr = new InputStreamReader(new FileInputStream(file)); // 바이트 스트림을 InputStreamReader를 사용해서 read로 읽을 수 있다.
+			isr = new InputStreamReader(new FileInputStream(file));
 			
-			
-			char[] cbuf = new char[4]; // 한번에 4글자를 읽어오시오.
-			int readCount = 0; // 실제로 읽은 글자수를 저장해 두시오.
-			
+			char[] cbuf = new char[4];  // 한 번에 4글자를 읽어 오시오.
+			int readCount = 0; 		    // 실제로 읽은 글자수를 저장해 두시오.
 			StringBuilder sb = new StringBuilder();
 			
-			while((readCount = isr.read(cbuf)) != -1 ) {
-				sb.append(cbuf, 0, readCount); // 배열 cbuf의 인덱스 0부터 readCount개 데이터를 사용한다.
-			}										 
-				
+			while((readCount = isr.read(cbuf)) != -1) {
+				sb.append(cbuf, 0, readCount);  // 배열 cbuf의 인덱스 0부터 readCount개 데이터를 사용한다.
+			}
+			
 			System.out.println(sb.toString());
 			
 		} catch(IOException e) {
@@ -124,14 +122,13 @@ public class MainCalss {
 				if(isr != null) {
 					isr.close();
 				}
-			} catch(IOException e) {
+			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			
 		}
 		
-	}	
-		
+	}
+
 	public static void ex03() {
 		
 		File file = new File("C:" + File.separator + "storage", "ex03.bin");
@@ -281,7 +278,7 @@ public class MainCalss {
 		}
 	}
 	public static void main(String[] args) {
-		ex01();
+		ex02_complete();
 	}   
 
 }
