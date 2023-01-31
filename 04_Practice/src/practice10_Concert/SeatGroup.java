@@ -24,6 +24,7 @@ public class SeatGroup {
 		// 시트번호는 1부터 시작
 		System.out.print("예약할 시트번호 >>> ");
 		int seatNo = sc.nextInt();
+		
 		if(seatNo < 1 || seatNo > seats.length) {
 			System.out.println(seatNo + "번 좌석은 없는 좌석입니다.");
 			return false;

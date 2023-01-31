@@ -288,7 +288,8 @@ public class MainClass {
 																	 
 			// InputStreamReader가 필요하다.
 			
-			System.out.println("문장 입력 >>> ");
+			System.out.println("문장 입력 >>> ");    
+			
 			String sentence = br.readLine();
 			
 			System.out.println("입력된 문장 : " + sentence);
@@ -303,6 +304,8 @@ public class MainClass {
 			} catch(IOException e) {
 				e.printStackTrace();
 			}
+			
+			
 		}
 		
 		
