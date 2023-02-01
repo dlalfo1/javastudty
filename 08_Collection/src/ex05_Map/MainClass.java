@@ -14,7 +14,10 @@ public class MainClass {
 	public static void ex01() {
 		
 		/*
-		  * Map은 객체를 대신해서 쓸 수 있다.
+		  
+		  ********Map은 콜렉션이 아니다! List,Set과는 다르다*********
+		  *
+		  * Map은 객체를 대신해서 쓸 수 있다. 
 		  
 		 	HashMap 
 		 	1. 하나의 데이터가 2개의 요소로 구성된다.
@@ -37,6 +40,7 @@ public class MainClass {
 		
 		// 추가
 		// put(Key, Value)
+		
 		person.put("name", "홍길동"); // 하나의 Entry;
 		person.put("age", 30);
 		
@@ -76,7 +80,11 @@ public class MainClass {
 		dictionary.put("autumn", "가을");
 		dictionary.put("winter", "겨울");
 		
-		// Map 순회하기
+		// Map 순회하기 ( 실무에선 Map의 순회문을 짤 일이 없다. api 사용할 때나 사용할 수도 있을 듯. 만들기보단 해석하는 능력이 필요)
+		
+		
+		// keySet() 메소드를 사용해서 key값을 가져오면 Set에 저장된다.
+		// 그래서 엔트리엔 순서가 없다. Set엔 순서가 없으므로
 		
 		// 1. Key만 모두 가져온 뒤 해당 key값을 가진 Value를 가져오기
 		Set<String> keySet = dictionary.keySet(); // Set에는 인덱스가 없음 그러니 for문도 쓸 수 없음 향상 for문 가능
@@ -134,7 +142,7 @@ public class MainClass {
 		
 	}
 	public static void main(String[] args) {
-		ex04();	
+		ex03();	
 	}
 
 }

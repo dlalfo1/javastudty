@@ -6,6 +6,8 @@ import java.util.Set;
 public class MainClass {
 
 	public static void main(String[] args) {
+		
+		// Hash 는 알고리즘관련이라 크으게 중요하진 않다.
 
 		User user1 = new User("admin", "123456");
 		User user2 = new User("admin", "123456");

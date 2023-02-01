@@ -1,13 +1,12 @@
 package ex07_Collections;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 public class MainClass {
 
+		// 유틸기능이라 보면된다. 이것도 너무 깊게 공부하지 말기
 
 	public static void printList(List<Integer> list) {
 			

@@ -9,9 +9,15 @@ public class MainClass {
 	
 	public static void ex01() {
 		
-		// 배열 리스트(ArrayList) 선언 및 생성 
+		// 배열 리스트(ArrayList) 선언 및 생성 (실무에서 거의 이것만 쓴다)
+		
+		// add, get, size 메소드는 꼭 알아두자
 		
 		// List 인터페이스를 가져다 쓰는거라 앞에 List 써주고 임폴트해줌
+		
+		// 애초에 <> 안에 String타입을 넣어주면 add 기능을 사용할 때 String값밖에 넣지 못한다.
+		
+		// 리스트는 인덱스가 있다.
 		
 		List<String> list = new ArrayList<String>();
 		
@@ -42,10 +48,10 @@ public class MainClass {
 		System.out.println("리스트의 길이 : " + list.size()); // 배열의 길이 찾기
 		
 		// 리스트에 저장된 개별 요소 확인 방법
-		System.out.println("첫 번째 요소: " + list.get(0)); // 배열과 다르게 get[]이 아니라 get() 임.
+		System.out.println("첫 번째 요소: " + list.get(0)); // 배열과 다르게 get[]이 아니라 get() 임. 인덱스의 요소 꺼내올 때 사용한다.
 		System.out.println("마지막 요소 : " + list.get(list.size() -1));
 	
-		// 리스트 순회
+		// 리스트 순회 (List에서 값 가져오고 싶으면 for문 짜야한다.)
 		// 모든 요소의 합계 구하기
 		
 		int sum = 0;

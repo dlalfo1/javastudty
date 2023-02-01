@@ -14,6 +14,7 @@ public class MainClass {
 
 	
 	// List와 Set는 사용구현법이 비슷하다. 왜냐 부모클래스(Collection 인터페이스)가 같기 때문에
+	// 리스트에서 사용하는 add, size 똑같이 쓴다.
 	
 	public static void ex01() {
 	
