@@ -2,15 +2,15 @@ package practice05_Employee;
 
 import java.util.Scanner;
 
-public class Company {
+public class Company { // 회사
 
-	private Employee[] employees;
-	private int idx;
+	private Employee[] employees; // 고용인이 여러명 들어갈 거니까 배열로 선언해준다.
+	private int idx; // 실제 직원수
 	private Scanner sc;
 	
 	public Company() {
 		employees = new Employee[5];  // 사원을 최대 5명 고용할 수 있는 회사
-		sc = new Scanner(System.in);
+		sc = new Scanner(System.in);  // 입력받는 스캐너 생성 
 	}
 	
 	public void addEmployee() {
@@ -19,13 +19,13 @@ public class Company {
 			return;
 		}
 		System.out.print("고용 형태 선택(1.정규 2.비정규) >>> ");
-		String kind = sc.next();
+		String kind = sc.next();  // 입력받은 값 kind에 저장
 		System.out.print("신규 사원번호 >>> ");
-		int empNo = sc.nextInt();
+		int empNo = sc.nextInt(); // 입력받은 값 empNo에 저장
 		System.out.print("신규 사원명 >>> ");
-		String name = sc.next();
+		String name = sc.next();  // 입력받은 값 name에 저장
 		switch(kind) {
-		case "1":
+		case "1": // 맨처음 고용 형태 선택에서 1 또는 정규를 입력했을 때
 		case "정규":
 			System.out.print("기본급 >>> ");
 			int salary = sc.nextInt();
@@ -39,7 +39,7 @@ public class Company {
 			employees[idx++] = temporary;
 			break;
 		default: 
-			System.out.println("잘못된 고용 형태입니다. 다시 시도하세요.");
+			System.out.println("잘못된 고용 형태입니다. 다시 시도하세요."); // 1,2,정규,비정규 입력된게 아니라면 출력
 		}
 		System.out.println("사원 등록 완료. 현재 등록된 사원 " + idx + "명");
 	}
@@ -49,12 +49,14 @@ public class Company {
 			System.out.println("등록된 사원이 없습니다.");
 			return;
 		}
-		System.out.print("삭제할 사원번호 >>> ");
+		System.out.print("삭제할 사원번호 >>> ");  // 사원번호로만 고용인 관리하는듯? 
+												   // 정규직 비정규직 사원번호가 같을 때 그걸 거르는 기능은 없다.
 		int empNo = sc.nextInt();
-		for(int i = 0; i < idx; i++) {
+		for(int i = 0; i < idx; i++) { // idx 실제로 addEmployee 할때 값이 늘어나므로 실제 직원수라고 보면 된다ㅏ.
 			if(empNo == employees[i].getEmpNo()) {
+				// 스캐너로 입력받은 숫자가 employees배열 인덱스에 들어가있는 사원번호랑 같다면
 				System.arraycopy(employees, i + 1, employees, i, idx - 1 - i);
-				employees[--idx] = null;
+				employees[--idx] = null; // 2번 지울거면 1인덱스가 되니까 2번째 사원이 맞다
 				System.out.println("사원 삭제 완료. 현재 등록된 사원 " + idx + "명");
 				return;
 			}
@@ -89,7 +91,10 @@ public class Company {
 		System.out.println("전체 사원 목록(" + idx + "명)");
 		for(int i = 0; i < idx; i++) {
 			employees[i].info();
-			System.out.println("[월급:" + employees[i].getPay() + "원]");
+			System.out.println("[월급:" + employees[i].getPay() + "원]"); 
+			
+			// 기본급,월급 / 시급, 월급 둘 다 어떻게 나오는지..
+			// info를 호출하면 정규직 비정규직이 어떻게 다 나오나.
 			totalPay += employees[i].getPay();
 		}
 		System.out.println("[사원 전체 급여:" + totalPay + "원]");

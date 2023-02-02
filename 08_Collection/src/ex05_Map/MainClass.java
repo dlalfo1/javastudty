@@ -36,6 +36,8 @@ public class MainClass {
 		 */
 
 		// Person 정보를 HashMap으로 만들기 (Key관리 용도로 만들어보기)
+		
+		
 		Map<String, Object> person = new HashMap<String, Object>(); // 왕 중요...많이 씀. . . . . . .
 		
 		// 추가
