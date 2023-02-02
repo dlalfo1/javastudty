@@ -9,8 +9,11 @@ public class Company { // 회사
 	private Scanner sc;
 	
 	public Company() {
+
 		employees = new Employee[5];  // 사원을 최대 5명 고용할 수 있는 회사
 		sc = new Scanner(System.in);  // 입력받는 스캐너 생성 
+									  // 여기서 스캐너 객체를 생성한 이유는 다른 메소드들에서 스캐너를 쓰려고
+									  // 생성자 본문에 만들어준것.
 	}
 	
 	public void addEmployee() {
@@ -30,7 +33,7 @@ public class Company { // 회사
 			System.out.print("기본급 >>> ");
 			int salary = sc.nextInt();
 			employees[idx++] = new Regular(empNo, name, salary);
-			break;
+			break; // 적어주지 않으면 밑에꺼도 실행되기 때문에
 		case "2":
 		case "비정규":
 			System.out.print("시급 >>> ");
@@ -90,7 +93,8 @@ public class Company { // 회사
 		int totalPay = 0;  // 전체 사원의 급여 합계
 		System.out.println("전체 사원 목록(" + idx + "명)");
 		for(int i = 0; i < idx; i++) {
-			employees[i].info();
+			employees[i].info(); 
+			                     // 
 			System.out.println("[월급:" + employees[i].getPay() + "원]"); 
 			
 			// 기본급,월급 / 시급, 월급 둘 다 어떻게 나오는지..

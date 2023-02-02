@@ -10,8 +10,9 @@ public abstract class Employee {    // 사원(부모클래스)
 	private String name;  // 사명
 	
 	// 생성자
+	
 	public Employee(int empNo, String name) {
-		super();
+		super(); // 모든 클래스는 부모클래스를 먼저 호출해야한다 (여기서는 오브젝트 클래스이다)
 		this.empNo = empNo; 
 		this.name = name;
 	}
@@ -34,7 +35,7 @@ public abstract class Employee {    // 사원(부모클래스)
 	}
 	
 	public void info() {
-		System.out.print("[사원번호:" + empNo + ", 사원명:" + name + "]");
+		System.out.print("[사원번호:" + empNo + ", 사원명:" + name + "]"); // 추상클래스의 메소드기때문에 단독으론 호출할 수 없어서 자식 클래스에서 오버라이드 해서 재정의해서 부른게 아닌가..싶다
 	}
 	
 	public abstract int getPay();  // 모든 사원들의 월급을 반환하는 추상 메소드. 정규/비정규에 따라 계산법이 다르기 때문에 추상 메소드로 작성

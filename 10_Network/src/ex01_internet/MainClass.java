@@ -68,9 +68,10 @@ public class MainClass {
 		try {
 			
 			url = new URL(apiURL);
-			con = (HttpURLConnection)url.openConnection(); // openConnection메소드를 쓰려면 IOException 처리가 필요하다. 
-														   // 접속 즉, 스트림 개념이라 보면 된다.
+			con = (HttpURLConnection)url.openConnection(); 
 			
+			// openConnection메소드를 쓰려면 IOException 처리가 필요하다. 
+			// 접속 즉, 스트림 개념이라 보면 된다.
 			
 			/*
 			 	HTTP 응답 코드 공부하기(접속이 됐냐 안됐냐 확인)
@@ -78,6 +79,7 @@ public class MainClass {
 				2. 40X : 잘못된 요청(사용자가 잘못하였음. 주로 주소 잘못 입력해서 들어갈 때)
 				3. 50X : 서버측 오류(서버가 잘못하였음)
 			*/
+			
 			System.out.println("정상 응답 : " + HttpURLConnection.HTTP_OK); // 200
 			System.out.println("Not Found : " + HttpURLConnection.HTTP_NOT_FOUND); // 404
 			System.out.println("Internal Error :" + HttpURLConnection.HTTP_INTERNAL_ERROR); // 500
@@ -89,11 +91,12 @@ public class MainClass {
 			}
 			
 			// 요청 방식(요청 메소드)
+			// GET : 데이터 받는 방식을 주소창에 입력할게
+			// 예를들어 로그인할 때 id랑 pw 넣을 때는 주소창에 입력하지 않으므로 GET방식이 아니다.(POST 타입)
 			String requestMethod = con.getRequestMethod();
-			System.out.println("요청 방식 : " + requestMethod); // GET : 데이터 받는 방식을 주소창에 입력할게
-															    // 예를들어 로그인할 때 id랑 pw 넣을 때는 주소창에 입력하지 않으므로 GET방식이 아니다.
+			System.out.println("요청 방식 : " + requestMethod); 
 			
-			// 컨텐트 타입 (웹 상으로 주고받는 정보의 타입. 자바에서 int,double처럼 정해진 타입 같은 거)
+			// 컨텐트 타입 (웹 상으로 주고받는 정보의 타입. 자바에서 int타입, double타입처럼 정해진 타입 같은 거)
 			String contentType = con.getContentType();
 			System.out.println("컨텐트 타입 : " + contentType ); // txt/html; charset=UTF-8
 			
@@ -104,8 +107,8 @@ public class MainClass {
 			String referer = con.getRequestProperty("Referer");
 			System.out.println("Referer : " + referer); // 이전 주소가 나옴
 			
-			// 예를 들어 인터넷 서핑하다가 로그인을 하면 첫페이지로 돌아갈 때가 있을 때 그럼 좀 구리고
-			// 웹 만들 때 Referer 주소 참조해서 이전페이지로 바로 돌아가게 만들면 좋다.
+			// 예를 들어 인터넷에서 로그인을 할 경우 맨 처음 페이지로 돌아가게 만드는건 좋지 않다.
+			// 웹 만들 때 Referer 주소 참조해서 로그인시 이전페이지로 바로 돌아가게 만들면 좋다.
 			
 			// 접속 종료
 			con.disconnect(); 
@@ -126,7 +129,7 @@ public class MainClass {
 		HttpURLConnection con = null;
 		
 		BufferedInputStream in = null; // Daum 로그를 읽어 들이는 입력 스트림
-							   // 바이트 스트림이기 때문에 텍스트나 이미지파일이나 전부 받을 수 있다.
+							           // 바이트 스트림이기 때문에 텍스트 및 이미지파일 전부 받을 수 있다.
 		
 		BufferedOutputStream out = null; // C:\storage\daum.png로 보내는 출력 스트림
 		
@@ -142,7 +145,6 @@ public class MainClass {
 					in = new BufferedInputStream(con.getInputStream());
 					out = new BufferedOutputStream(new FileOutputStream(file)); 
 																												
-					
 					byte[] b = new byte[10];
 					int readByte = 0;
 					
@@ -160,8 +162,7 @@ public class MainClass {
 			
 		} catch(MalformedURLException e) {
 			System.out.println("apiURL 주소 오류");
-		} catch(IOException e) {
-			// 접속 실패 또는 스트림 관련 오류
+		} catch(IOException e) {	// 접속 실패 또는 스트림 관련 오류
 			e.printStackTrace();
 		}
 		
@@ -213,21 +214,24 @@ public class MainClass {
 		 
 	}
 	
-	public static void ex04() { // 읽어드린 데이터를 문자스트림리더 활용해서 문자열로 바꾸는게 중요하다.
-								// 보통 api에서 txt 파일을 읽어드리기 때문에
-								// 바이트로 받을거면 스트림을 쓰면 되는데 문자를 읽을거면 스트림리더를써야한다!!!!!
+	public static void ex04() { 
+		
+		// 읽어들인 데이터를 문자열로 바꾸는게 중요하다. 					
+		// 보통 api에서 txt 파일을 읽어들이기 때문에 바이트를 읽을 수 있는 거 말고
+		// 전부 읽을 수 있는 리더를 사용해야 한다.
+		
+		// ***문자를 읽을 목적이라면 스트림리더를 써야한다(InPutStream 안 됨)
 		
 		String apiURL = "https://gdlms.cafe24.com/uflist/curri/10004/bbs/68_63d8848f7d506.txt";
 		
 		URL url = null;
 		HttpURLConnection con = null;
 		
-		BufferedReader reader = null; // 한글 깨지면 안되니까 문자를 받을 수 있는 스트림리더를 써야한다.
-		BufferedWriter writer = null;
+		BufferedReader reader = null; // 한글 깨지면 안되니까 문자를 받을 수 있는 리더를 써야한다.
+		BufferedWriter writer = null; // 읽은 한글을 다시 보내기 위해 롸이터를 쓴다.
 		File file = null;
 		
 		try {
-			
 				url = new URL(apiURL);
 				con = (HttpURLConnection)url.openConnection();
 				
@@ -242,7 +246,6 @@ public class MainClass {
 					reader = new BufferedReader(new InputStreamReader(con.getErrorStream()));
 					file = new File("C:" + File.separator + "storage", "다운로드실패.html");
 					message = "다운로드 실패";
-					
 				}
 				
 				StringBuilder sb = new StringBuilder();
@@ -269,40 +272,6 @@ public class MainClass {
 			
 		} catch (IOException e) {
 			
-		}
-		
-	}
-	
-	public static void ex04_practice() { // ex04 버퍼 사용해보기
-		
-		String apiURL = "https://gdlms.cafe24.com/uflist/curri/10004/bbs/68_63d8848f7d506.txt";
-		
-		// 여기에 있는 데이터를 읽어와서 "storage", "다운로드문서.txt" 이 파일 만들어서 여기에 복사하기.
-		// 버퍼의 리드라인 사용해보기~
-		
-		URL url = null;
-		HttpURLConnection con = null;
-		
-		BufferedReader reader = null;
-		BufferedWriter writer = null;
-		
-		File file = new File("C:" + File.separator + "storage", "다운로드문서.txt");
-		
-		
-		try {
-			
-				url = new URL(apiURL);
-				con = (HttpURLConnection)url.openConnection();
-				
-				reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
-			
-			
-			
-			
-		} catch(MalformedURLException e) {
-			System.out.println("apiURL 형식 오류");
-		} catch(IOException e) {
-			e.printStackTrace();
 		}
 		
 	}
@@ -387,7 +356,7 @@ public class MainClass {
 		
 	}
 	public static void main(String[] args) {
-		ex05();
+		ex06();
 	}
 
 }

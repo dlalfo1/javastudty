@@ -9,7 +9,7 @@ public class Regular extends Employee { // 고용주를 상속하는 정규직(�
 
 	// 생성자
 	public Regular(int empNo, String name, int salary) {
-		super(empNo, name);
+		super(empNo, name); // 슈퍼클래스 먼저 호출 -> 임플로이 클래스
 		this.salary = salary;
 	}
 	
@@ -22,7 +22,7 @@ public class Regular extends Employee { // 고용주를 상속하는 정규직(�
 		this.salary = salary;
 	}
 	
-	@Override
+	@Override 
 	public void info() {
 		super.info();  // Employee의 info 메소드 호출
 					   // [사원번호: + empNo + 사원명 + name + ] 출력

@@ -38,8 +38,12 @@ public class MainClass {
 			con = (HttpURLConnection)url.openConnection(); // IOException 발생 위치
 			
 			con.setRequestMethod("GET"); // 주소창에 파라미터를 붙여서 요청하는 방식을 GET방식이라 한다.
-			con.setRequestProperty("Content-Type", "application/xml; charset=UTF-8"); // 내려받을 정보의 타입
-																					  // xml의 문서의 content타입(한글로 인코딩 된)
+			con.setRequestProperty("Content-Type", "application/xml; charset=UTF-8"); 
+			
+			// 내려받을 정보의 타입
+			// xml의 문서의 content타입(한글로 인코딩 된)
+			
+			
 			int responseCode = con.getResponseCode();
 			if(responseCode == 200) {
 			reader = new BufferedReader(new InputStreamReader(con.getInputStream())); // 실행 정상일 때
@@ -91,10 +95,6 @@ public class MainClass {
 		BufferedReader reader = null;
 		BufferedWriter writer = null;
 		
-		// http://openapi.airport.co.kr/service/rest/FlightScheduleList
-		// /getDflightScheduleList?ServiceKey=인증키&schDeptCityCode=GMP&schArrvCityCode=PUS&pageNo=1
-
-		
 		try {
 			apiURL += "?serviceKey=" + URLEncoder.encode(serviceKey, "UTF-8");
 			apiURL += "pageNo=1";
@@ -138,10 +138,6 @@ public class MainClass {
 
 	}
 	
-	public static void ex03() {
-		
-		
-	}
 	public static void main(String[] args) {
 		ex02();  
 	}
