@@ -10,7 +10,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 
-public class MainClass {
+public class XMLMainClass {
 
 	public static void ex01() {
 		
