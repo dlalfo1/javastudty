@@ -5,10 +5,9 @@ import java.util.Scanner;
 public class SeatGroup {
 
 	private String seatType;  // "S", "R", "A" 중 하나를 가짐
-	private Seat[] seats; // 
+	private Seat[] seats;
 	private Scanner sc;
 	
-	// seatTypes[i], seatCount[i]
 	public SeatGroup(String seatType, int count) {  // new SeatGroup("S", 20) : S석이 20개 있다.
 		this.seatType = seatType;
 		seats = new Seat[count];
@@ -20,11 +19,10 @@ public class SeatGroup {
 	
 	// 예약
 	public boolean reserve() {
-		reserveInfo();
+		info();
 		// 시트번호는 1부터 시작
 		System.out.print("예약할 시트번호 >>> ");
 		int seatNo = sc.nextInt();
-		
 		if(seatNo < 1 || seatNo > seats.length) {
 			System.out.println(seatNo + "번 좌석은 없는 좌석입니다.");
 			return false;
@@ -37,14 +35,14 @@ public class SeatGroup {
 		// 예약 진행
 		System.out.print("예약자 이름 >>> ");
 		String name = sc.next();
-		seats[seatNo - 1].setName(name);
+		seats[seatNo - 1].reserve(new Person(name));
 		System.out.println(seatNo + "번 좌석 예약이 완료되었습니다.");
 		return true;
 	}
 	
 	// 예약 취소
 	public boolean cancel() {
-		reserveInfo();
+		info();
 		System.out.print("취소자 이름 >>> ");
 		String name = sc.next();
 		for(int i = 0; i < seats.length; i++) {
@@ -61,11 +59,11 @@ public class SeatGroup {
 	}
 	
 	// 예약 상황 출력
-	public void reserveInfo() {
-		System.out.println("[" + seatType + "]");
+	public void info() {
+		System.out.println("[" + seatType + "] 좌석 예약 내역");
 		for(int i = 0; i < seats.length; i++) {
 			if(seats[i].isOccupied()) {
-				System.out.print(seats[i].getName().substring(0, 1) + "* ");
+				System.out.print(seats[i].getPerson().getName().substring(0, 1) + "* ");
 			} else {
 				System.out.print((i + 1) + (i < 9 ? "   " : "  "));
 			}
