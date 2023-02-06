@@ -1,4 +1,4 @@
-package ex03_Sever_Client;
+package ex03_Server_Client;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;

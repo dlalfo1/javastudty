@@ -58,7 +58,8 @@ public class MainClass {
 
 	public static void ex02() {
 		
-		// 웹 접속을 담당하는 HttpURLConnection
+	
+		// URLConnection은 웹을 통해 데이터를 주고 받는데 사용된다. 웹 접속을 담당한다.
 		
 		
 		String apiURL = "https://www.naver.com";
