@@ -46,14 +46,18 @@ public class JSONMainClass {
 		int responseCode = con.getResponseCode(); // 정상접속인지 확인하기 위해서 응답코드 가져오는 메소드 사용
 
 		if(responseCode == 200) {
-			
+	
 		reader = new BufferedReader(new InputStreamReader(con.getInputStream())); // 응답코드가 정상이면 정상스트림 연결
 		
 		// 정보를 읽어오는것은 con.getInputStream이다. 인풋스트림은 바이트 타입의 정보밖에 가져오지 못하므로
 		// 문자열로 가져오기 위하여 InputStreamReader사용하고 성능향상을 하기 위해 BufferedReader를 껴준다.
 		// 즉 서버로부터 받은 응답 메시지에서 데이터를 추출해 자바의 문자열로 변환한다.
 		} else {
-			reader = new BufferedReader(new InputStreamReader(con.getErrorStream())); // 응답코드가 정상 외면 에러스트림 연결?
+			
+			reader = new BufferedReader(new InputStreamReader(con.getErrorStream())); 
+			
+			// 에러스트림을 열지 않아도 에러시 출력되는 코드는 똑같다.
+			// 하지만 개발자들이 걍 그렇게 쓰기로 해서 쓰는거임...
 		}
 		
 		String line = null; // StringBuilder를 사용해서 긁어올 문자들을 저장할 변수 선언
