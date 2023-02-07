@@ -32,14 +32,19 @@ public class JSONMainClass {
 		sbURL.append(apiURL); // 먼저 api의 주소를 더해주고
 		sbURL.append("?serviceKey=" + URLEncoder.encode(serviceKey, "UTF-8")); // 필수 요청정보인 서비스키 UTF-8 방식으로 암호화.
 																			   // 인코딩하지 않으면 사용불가하다.
+	
 		sbURL.append("&returnType=json");   // 파라미터 값은 api싸이트에 요청하는 변수개념
 											// JSON 형식으로 데이터를 받아오겠다는 소리
+	
 		sbURL.append("&sidoName=" + URLEncoder.encode(sidoName, "UTF-8")); // 한글도 인코딩 필수
 		
 		
 		url = new URL(sbURL.toString()); // 전달받은 sbURL String으로 URL 객체를 만든다.
 		con = (HttpURLConnection)url.openConnection(); // openConnection 메서드를 호출하여 HttpURLConnection 객체를 얻은 후 웹에 접속한다.
+				// HttpURLConnection, URLConnection 메소드를 둘 다 사용하기 위해서
+		
 		con.setRequestMethod("GET"); // 접속방식 설정(데이터 받는 방식을 주소창에 입력하는걸 GET방식이라 한다.)
+									 // POST는 수정방식임(블로그 수정같은거) 우린 읽어들이려고 요청만 하면 되니까 겟방식 쓰면 되는 거임.
 		con.setRequestProperty("content-type", "application/json; charset=UTF-8"); 
 		// 컨텐트 타입 (웹 상으로 주고받는 정보의 타입. 자바에서 int타입, double타입처럼 정해진 타입 같은 거)
 		
@@ -71,7 +76,9 @@ public class JSONMainClass {
 		
 		reader.close(); // 다 읽었으니 스트림 닫아준다.
 		con.disconnect(); // 웹과의 접속 닫아준다.
+		
   	    System.out.println(sb.toString());
+  	    
 		JSONObject obj = new JSONObject(sb.toString()); // 이제 제이슨 오브젝트 만들어서 JOSON형식으로 바꿔주기
 		JSONObject body = obj.getJSONObject("response").getJSONObject("body"); // 원하는건 items 객체의 정보이다.
 		JSONArray items = body.getJSONArray("items"); // items는 []형식이므로 JSON 배열에 담아준다.
