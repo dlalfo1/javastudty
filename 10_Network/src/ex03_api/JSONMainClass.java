@@ -42,7 +42,7 @@ public class JSONMainClass {
 		url = new URL(sbURL.toString()); // 전달받은 sbURL String으로 URL 객체를 만든다.
 		con = (HttpURLConnection)url.openConnection(); // openConnection 메서드를 호출하여 HttpURLConnection 객체를 얻은 후 웹에 접속한다.
 				// HttpURLConnection, URLConnection 메소드를 둘 다 사용하기 위해서
-		
+		System.out.println(url);
 		con.setRequestMethod("GET"); // 접속방식 설정(데이터 받는 방식을 주소창에 입력하는걸 GET방식이라 한다.)
 									 // POST는 수정방식임(블로그 수정같은거) 우린 읽어들이려고 요청만 하면 되니까 겟방식 쓰면 되는 거임.
 		con.setRequestProperty("content-type", "application/json; charset=UTF-8"); 
@@ -100,6 +100,7 @@ public class JSONMainClass {
 			e.printStackTrace();
 		}
 	}
+	
 	
 	public static void ex02() { // 초미세먼지 주간예보 조회
 		
@@ -224,7 +225,7 @@ public class JSONMainClass {
 	}	
 
 	public static void main(String[] args) {
-		ex01();
+		ex02();
 	}
 
 }
