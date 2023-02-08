@@ -6,7 +6,6 @@ public class array {
 
 	
 	public static void ex01() {
-		
 		//배열타입 + 참조변수 = new 배열타입[배열길이]
 		
 		int[] score = new int[5];  // 길이가 5인 int배열을 생성하고 그 주속값을 참조변수 score에 저장한다

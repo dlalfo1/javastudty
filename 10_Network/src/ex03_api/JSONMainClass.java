@@ -23,7 +23,6 @@ public class JSONMainClass {
 		HttpURLConnection con = null; // HttpURLConnection은 http 웹을 통해 정보를 주고받는 등 통신을 수행하기 위하여 필요한 클래스이다.
 		BufferedReader reader = null; // Buffer를 이용한 입력 Stream 클래스이다. (Stream : 데이터 입출력시 전송되는 데이터의 흐름)
 		
-		
 				
 		try {
 		
@@ -225,7 +224,7 @@ public class JSONMainClass {
 	}	
 
 	public static void main(String[] args) {
-		ex02();
+		ex01();
 	}
 
 }
