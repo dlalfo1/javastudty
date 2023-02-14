@@ -30,7 +30,8 @@ public class ApiMain {
 		
 		
 		try {
-				
+		
+			//D
 				StringBuilder sbURL = new StringBuilder();
 				sbURL.append(apiURL); 
 				sbURL.append("?serviceKey="+ URLEncoder.encode(serviceKey, "UTF-8")); 
