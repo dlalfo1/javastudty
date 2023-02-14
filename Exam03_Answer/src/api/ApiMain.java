@@ -62,7 +62,7 @@ public class ApiMain {
 			JSONObject obj = new JSONObject(sb.toString());
 			JSONArray itemList = obj.getJSONObject("items").getJSONArray("item");
 			
-			// 발생일자 2021020618 토요일, 사망자수 1명, 부상자수 1명 첫번째 출력
+			
 			/*
 			 	String occrrncDt;  // 발생월일시 (2019011622)
 				String occrrncDayCd;  // 발생요일코드 (4)
@@ -71,26 +71,36 @@ public class ApiMain {
 			 */
 			for(int i = 0; i < itemList.length(); i++) {
 				JSONObject item = itemList.getJSONObject(i);
-				String occrrncDt = item.getString("occrrnc_dt"); // "2021020618"
+				String occrrncDt = item.getString("occrrnc_dt"); // 발생월일시 : 2021020618
 				String[] week = {"", "일", "월", "화", "수", "목", "금", "토"};
-				String occrrncDayCd = item.getString("occrrnc_day_cd"); // 7
-				int dthDnvCnt = item.getInt("dth_dnv_cnt"); // 1
-				int injpsnCnt = item.getInt("injpsn_cnt"); // 1
+				String occrrncDayCd = item.getString("occrrnc_day_cd"); // 발생요일코드 : 7
+				int dthDnvCnt = item.getInt("dth_dnv_cnt"); // 사망자수 : 1
+				int injpsnCnt = item.getInt("injpsn_cnt"); // 부상자수 : 1
 				fileBuilder.append("발생일자 ").append(occrrncDt).append(" ").append(week[Integer.parseInt(item.getString("occrrnc_day_cd"))]).append("요일, ");
 				fileBuilder.append("사망자수 ").append(dthDnvCnt).append("명, ");
 				fileBuilder.append("부상자수 ").append(injpsnCnt).append("명\n");
+				
+				// 발생일자 2021020618 토요일, 사망자수 1명, 부상자수 1명 
+				// System.out.println(fileBuilder.toString());
+				// 여기까지만 해도 위 내용처럼 출력 됨. fileBuilder로 제이슨오브젝트에 있는내용 스트링으로 다 긁어 왔으니까
+				// 밑에 객체 만들어서 List에 넣는건 아마 한번 그런거 해보라고 하신거 아닐까 싶음...
+				
+				
 				Accident accident = new Accident();
 				accident.setOccrrncDt(occrrncDt);
 				accident.setOccrrncDayCd(occrrncDayCd);
 				accident.setDthDnvCnt(dthDnvCnt);
 				accident.setInjpsnCnt(injpsnCnt);
 				accidents.add(accident);
+				
 			}
+			
+		
 			
 			File file = new File("accident.txt");
 			writer = new BufferedWriter(new FileWriter(file));
 			writer.write(fileBuilder.toString());
-			writer.flush();
+			writer.flush(); // 스트림에 남아있는 잔여물을 털어내는건데,, 굳이 안 써도 됨..
 			
 			writer.close();
 			
