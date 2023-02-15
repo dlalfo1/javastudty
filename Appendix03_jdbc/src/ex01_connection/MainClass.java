@@ -76,13 +76,17 @@ public class MainClass {
 		try {
 			
 			reader = new BufferedReader(new FileReader("db.properties"));
-			
+			// BufferedReader를 사용하여 db.properties 프로퍼티 파일을 읽어온다.
 		
 			// 프로퍼티 파일을 읽어서 프로퍼티 객체 생성하기
-			Properties properties = new Properties(); // 디폴트타입으로 생성해야 한다(리더로 읽은 값을 이용해서 객체를 사용하는 방법은 없다.)
-			properties.load(reader); // load 메소드 사용하여 리더를 불러온다. (예외처리 필요하다.)
+			Properties properties = new Properties(); // 디폴트타입으로 생성해야 한다
+			                                          // (리더로 읽은 값을 이용해서 객체를 사용하는 방법은 없다.)
+			properties.load(reader); // load 메소드 사용하여 프로퍼티 파일을 읽어온 reader를 불러온다. (예외처리 필요하다.)
+			 
 		
 			//프로퍼티 객체에 저장된 각 Property 읽기 (user와 password를 뜻한다.)
+			// reader로 읽어온 프로퍼티 파일의 Value값을 getProperty 메소드를 통해 가져와 String타입 변수에 담아준다.
+			// getProperty는 Key값을 제공하면 해당하는 Value를 문자열로 반환한다.
 			String url = properties.getProperty("url");
 			String user = properties.getProperty("user"); // getProperty 메소드를 사용해서 프로퍼티 파일의 프로퍼티를 가져온다.
 			String password = properties.getProperty("password"); 
@@ -113,15 +117,17 @@ public class MainClass {
 		
 	public static Connection getConnection() { // 반환할게 있으니 void타입이 아니다.
 		
+		// 위의 작업들을 반복하게 되면 코드가 지저분해지므로 메소드를 만들어놓고 사용한다.
 	
 		Connection con = null;
 		
 		try {
 			
-			Class.forName("oracle.jdbc.OracleDriver");
+			Class.forName("oracle.jdbc.OracleDriver"); // OracleDriver 클래스로딩
 			
 			Properties properties = new Properties();
-			properties.load(new BufferedReader(new FileReader("db.properties"))); // 이 안에 객체가 생기는게 어케되는..?
+			properties.load(new BufferedReader(new FileReader("db.properties"))); 
+			// FileReader로 db.properties 프로퍼티 파일을 읽어오고 거기에 보조스트림인 BufferedReader를 끼운다.
 			
 			con = DriverManager.getConnection(properties.getProperty("url"), properties.getProperty("user"), properties.getProperty("password"));
 			
@@ -137,6 +143,7 @@ public class MainClass {
 	}
 	
 	public static void main(String[] args) {
+		
 		Connection con = getConnection();
 		System.out.println("DB에 접속되었습니다.");
 		
