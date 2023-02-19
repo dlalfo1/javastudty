@@ -10,7 +10,11 @@ import dto.ContactDTO;
 public class ContactServiceImpl implements ContactService {
 
 	/************ 1. field **************/
+	
+	// 사용자에게 정보를 입력받을 스캐너 객체 선언
 	private Scanner sc;
+	
+	// DB와 연동하여 연락처 정보를 저장하고 관리할 객체 선언 (getInstance 메소드를 통해 생성)
 	private ContactDAO dao; 
 	
 	
@@ -36,7 +40,8 @@ public class ContactServiceImpl implements ContactService {
 		System.out.print("신규 연락처 주소 >>>");
 		String address = sc.next();
 		
-		ContactDTO contact = new ContactDTO(); // 디폴트로 객체 생성 => 세터게터로 초기화 하겠다.
+		// 디폴트로 객체 생성 => 세터게터로 초기화 하겠다.
+		ContactDTO contact = new ContactDTO(); 
 		
 		// 스캐너로 입력받은걸 contact에 넣어준다.
 		contact.setName(name);
@@ -47,11 +52,18 @@ public class ContactServiceImpl implements ContactService {
 		// 필드에 ContactDAO클래의 dao를 선언해줬으니 insertContact메소드를 가져다 쓸 수 있다.
 		int addResult = dao.insertContact(contact); 
 		
-		// 필드에 dao를 선언해서 dao 메소드 갖다 쓴건 알겠는데 애초에 dao는 프라이빗인데 어케 갖다쓰지..?
-		// 자 이건.... ContactServiceImpl 클래스가 ContactService를 인터페이스 함.
-		// ContactService 인터페이스엔 public void addContact(); 추상메소드가 있음..
-		// 그러니까 ContactServiceImpl 클래스에서 저 추상메소드를 재정의 해주는거임..
-		// 거기서 ContactDTO contact = new ContactDTO(); 이렇게 ContactDTO객체를 생성함.
+		/*
+			addContact 메소드에서 dao 변수를 사용할 수 있는이유
+			ContactServiceImpl 클래스에서 생성자에서  ContactDAO 객체를 생성하고 dao 멤버 변수에 할당하였다.
+			이렇게 생성된 dao 멤버 변수는 ContactServiceImpl 클래스 내의 다른 메소드에서도 접근이 가능하다.
+			즉, private으로 정보은닉된 dao 멤버변수는 같은 클래스내의 다른 메소드에서도 가능하기 때문에
+			동일클래스의 다른메소드에서도 dao변수를사용하여 ContactDAO 객체의 메소드를 호출 할 수있다.
+		*/
+		
+		// ContactServiceImpl 클래스가 ContactService 인터페이스를 구현함.
+		// ContactService 인터페이스엔 public void addContact(); 추상메소드가 있음.
+		// 그러니까 ContactServiceImpl 클래스에서 저 추상메소드를 재정의 해주는거임.
+		// ContactDTO contact = new ContactDTO(); 이렇게 ContactDTO객체를 생성함.
 		// ContactDTO 클래스의 필드를 스캐너 객체로 입력받은 내용을 통해 set 메소드로 초기화시켜준다.
 				
 		System.out.println(addResult + "개의 연락처가 등록되었습니다.");		
@@ -83,10 +95,9 @@ public class ContactServiceImpl implements ContactService {
 		// 위 코드는 트랜잭션 대상이 아니다
 		// SELECT는 트랜잭션 대상이 아니고 DELETE도 하나만 있기 때문에!
 		
-		
-	
-		
+
 	}
+	
 	
 	@Override
 	public void modifyContact() {

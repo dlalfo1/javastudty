@@ -14,13 +14,12 @@ import com.sun.source.tree.CatchTree;
 
 import dto.ContactDTO;
 
-/*
+	/*
 		DAO
 		1. Database Access 	Object
 		2. Database에 접근해서 쿼리문을 실행하고 쿼리문의 실행 결과를 받아온다.
 		3. 여러 객체가 만들어 지지 않도록 singleton 패턴으로 생성한다.
 			=> ex) 객체1이 INSERT하는동안 객체2가 SELECT 하지 않도록 DAO를 하나만 만든다. 걔가 모든일 다함. 완전 머슴임
-		   
 	*/
 	
 	public class ContactDAO {
@@ -31,9 +30,11 @@ import dto.ContactDTO;
 		private static ContactDAO dao = new ContactDAO(); 
 		
 		// 외부에선 객체를 못 만들게 막아놓는다. (외부에서 못 본다.)
-		private ContactDAO()  {} 
+		// 원래 디폴트 생성자는 굳이 만들지 않아도 자동으로 생성되지만
+        // private으로 막아놓기 위해서 생성해준다.
+		private ContactDAO()  {	} 
 		
-		// getInstance 메소드로 내가 만들어놓은 객체를 갖다 쓴다.
+		// getInstance 메소드로 내가 만들어놓은 객체를 갖다 쓴다. (해당 클래스의 인스턴스를 반환하는 역할을 수행)
 		// static 메소드는 클래스메소드라고도 한다 => 클래스 이름으로만 호출이 가능하기 때문이다.
 		public static ContactDAO getInstance() {
 			return dao;
@@ -60,9 +61,11 @@ import dto.ContactDTO;
 		
 		
 		// 공통 메소드 -1 (Connecton 얻기)
+		// dao의 getConnection 메소드를 사용하면 DB접속까지의 작업을 처리한다.
 		private Connection getConnection() {
 			
-			Connection con = null;
+		
+			Connection con = null; 
 			
 			try {
 				
@@ -82,8 +85,10 @@ import dto.ContactDTO;
 		}
 		
 		// 공통 메소드 -2 (사용한 자원 반납)
+		// dao의 close 메소드를 호출하면 열려있는 연결들을 닫아준다.
 		private void close() {
 			try {
+				// if문의 조건이 1개일 경우 중괄호({ })를 적지 않아도 된다.
 				if(rs != null) rs.close();
 				if(ps != null) ps.close();
 				if(con != null) con.close();
@@ -99,14 +104,19 @@ import dto.ContactDTO;
 		
 		
 		// CRUD 메소드 이름 지을 때는 DB 친화 짓는게 좋다.
-		// ContactDAO 객체를 생성하고 set메소드로 필드값을 저장해준것이 insertContact 메소드의 매개변수로 들어올것이다.
+		// ContactDTO 객체를 생성하고 set메소드로 필드값을 저장해준것이 insertContact 메소드의 매개변수로 들어올것이다.
 		// insertContact 메소드는 이미 ContactDTO 객체에 이름, 전화번호,이메일, 주소등 모든 정보가 저장되어 있다고 생각하고 동작되는 곳이다.
 		// 정보를 저장하는 코드는 DAO에 나오지 않는다.
-		public int insertContact(ContactDTO contact) { // 다른 패키지의 클래스 가져다 쓰는거니까 ContactDAO import 해줘야 한다.
+		// 다른 패키지의 클래스 가져다 쓰는거니까 ContactDAO import 해줘야 한다.
+		// ContactServiceImpl 클래스에서 사용자한테 입력 받은 값들을 가진 DTO contact 객체를 매개변수로 받아
+		// get메소드를 사용하여 값들을 빼온 후 sql 쿼리문 변수에 대입하고 executeUpdate로 실행시켜준다.
+		
+		public int insertContact(ContactDTO contact) { 
 			
 			try {
 				
 				 // 필드로 선언해놓은 con
+				 // 접속은과 자원반납은 어떤 메소드에서도 똑같이 반복해줘야한다.
 				con = getConnection();
 				
 				// 쿼리문 작성, 변수는 물음표(?)로 처리
@@ -117,10 +127,14 @@ import dto.ContactDTO;
 				
 				// 쿼리문의 변수처리된 곳에 get메소드로 값을 넣어주는 작업
 				// 지금 작성되는 메소드에서는 이미 contact에 모든 정보가 들어가있다고 생각하는 것이다.(아직 필드값에 원하는 정보는 저장하지 않았다.)
+				// ContactServiceImpl에서 contact객체를 생성해 사용자로부터 입력받은 값을 저장하고
+				// contact객체의 값을 get메소드로 가져와 set메소드로 쿼리문의 변수에 대입하여 쿼리문을 실행한다.
 				ps.setString(1, contact.getName());
 				ps.setString(2, contact.getTel());
 				ps.setString(3, contact.getEmail());
 				ps.setString(4, contact.getAddress());
+				
+				// 쿼리문 실행
 				res = ps.executeUpdate();
 				
 				
@@ -137,6 +151,7 @@ import dto.ContactDTO;
 		// CRUD 메소드 -2 (연락처 삭제하기)
 		// 1. 반환값	: 0(실패) 또는 1(성공)
 		// 2. 매개변수  : int contact_no 변수에는 삭제할 연락처의 고유 번호가 저장되어 있다.
+		// 다른 값과 다른 고유한 값으로 삭제해야 정확하다.
 		public int deleteContact(int contact_no) {
 			
 			try {
@@ -157,9 +172,18 @@ import dto.ContactDTO;
 		}
 		
 		// CRUD 메소드 -3 (이름을 이용한 연락처 조회하기)
+		// 연락처를 삭제할 때 이름으로 정보를 확인한뒤 contact_no로 확실하게 지우기 위하여.
 		// 1. 반환값	: List<ContactDTO>
 		// 2. 매개변수	: String name 변수에는 조회할 연락처의 이름이 저장되어 있다.
-		// ContactDTO는 하나의 정보 객체이기 때문에 얘를 리스트에 담아준다.
+		// ContactDTO는 하나의 정보 객체이기 때문에 얘를 List에 담아준다.
+		// List에 들어있는 연락처정보를 이름으로 조회해서 빼오는 기능.
+		// List는 순서가 있으며 중복이 허용된다.
+		
+		 /* 
+			 이 코드는 이름을 통해 연락처 정보를 조회하는 메소드이다.
+			 매개변수로 입력된 이름과 일치하는 데이터를 데이터베이스에서 조회한 후, 
+			 조회된 데이터를 ContactDTO 객체로 생성하여 리스트에 담아 반환한다.
+		 */
 		public List<ContactDTO> selectContactsByName(String name) {
 			
 			
@@ -168,21 +192,32 @@ import dto.ContactDTO;
 			try {
 				
 				con = getConnection();
+				
+				// 데이터베이스에서 이름이 일치하는 데이터를 조회하기 위한 SQL 쿼리문을 작성
 				sql = "SELECT CONTACT_NO, NAME, TEL, EMAIL, ADDRESS";
 				sql += " FROM CONTACT_TBL";
 				sql += " WHERE NAME = ?";
 				
+				// 작성된 SQL 쿼리문을 실행하기 위한 PreparedStatement 객체를 생성하고, 매개변수로 쿼리문을 넣어준다.
 				ps = con.prepareStatement(sql);
+				
+				// 입력된 name을 쿼리문의 변수에 대입한다.
 				ps.setString(1, name);
+				
+				// executeQuery() 메소드를 통해 SQL 쿼리문을 실행하고 결과값을 ResultSet 객체로 받아온다.
 				rs = ps.executeQuery();
 				
 				// 결과행이 2개이기 때문에 while문을 돌린다.
-				
+				// ResultSet 객체에 조회된 데이터가 존재하는 동안 while문을 실행
+				// rs 객체는 행 단위로 처리한다.
 				while(rs.next()) {
 					
-					
-					// rs 객체는 행 단위로 처리한다.
 					ContactDTO contact = new ContactDTO();
+					
+				// 조회된 데이터로부터 ContactDTO 객체를 생성한다.
+				// ResultSet 객체의 getInt(), getString() 메소드를 통해 
+				// 조회된 데이터를 추출하여 ContactDTO 객체의 필드에 값을 저장한다.
+				// 예를 들면 이름을 정숙으로 입력했으면 정숙의 정보가 입력된 contact 객체가 List에 담기는것이다.
 					contact.setContact_no(rs.getInt("CONTACT_NO"));
 					contact.setName(rs.getString("NAME"));
 					contact.setTel(rs.getString("TEL"));

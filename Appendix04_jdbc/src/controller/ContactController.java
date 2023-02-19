@@ -7,6 +7,9 @@ import service.ContactServiceImpl;
 
 public class ContactController {
 	
+	// 사용자의 요청을 어떻게 처리할지 결정하는 클래스
+	
+	
 	
 	/************ 1. field **************/
 	private Scanner sc;

@@ -2,18 +2,21 @@ package dto;
 
 public class ContactDTO {
 	
+	
+	// 테이블의 칼럼명을 변수로 선언해준다.
 	private int contact_no;
 	private String name;
 	private String tel;
 	private String email;
 	private String address;
 	
-	
-	public ContactDTO() { // 디폴트 생성자
+	 // 디폴트 생성자
+	public ContactDTO() {
 		
 	}
-
-	public ContactDTO(int contact_no, String name, String tel, String email, String address) { // 매개변수가 있는 생성자
+	
+	// 매개변수가 있는 생성자
+	public ContactDTO(int contact_no, String name, String tel, String email, String address) { 
 		super();
 		this.contact_no = contact_no; 
 		this.name = name;
@@ -22,6 +25,7 @@ public class ContactDTO {
 		this.address = address;
 	}
 
+	// 게터와 세터
 	public int getContact_no() {
 		return contact_no;
 	}
@@ -62,8 +66,9 @@ public class ContactDTO {
 		this.address = address;
 	}
 
+	// 연락처 정보를 쉽게 보기 위해서 toString 메소드 추가
 	@Override
-	public String toString() { // 연락처 정보를 쉽게 보기 위해서 추가함
+	public String toString() { 
 		return "ContactDTO [contact_no=" + contact_no + ", name=" + name + ", tel=" + tel + ", email=" + email
 				+ ", address=" + address + "]";
 	}
