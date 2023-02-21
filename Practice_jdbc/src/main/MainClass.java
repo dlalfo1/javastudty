@@ -1,12 +1,12 @@
 package main;
 
-import controller.ContactController;
+import controller.CarController;
 
 public class MainClass {
 
 	public static void main(String[] args) {
 		
-		new ContactController().play();
+		new CarController().play();
 	}
 
 }
